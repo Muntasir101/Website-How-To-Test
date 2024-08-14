@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Localized Form Example</title>
+    <style>
+        header {
+            background-color: #333;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        header a:hover {
+            color: #ddd;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-group button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .form-group button:hover {
+            background-color: #218838;
+        }
+        .form-group .error-message {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        .language-select {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="../index.html">Back to Home</a>
+    </header>
+	
+
+<div class="container">
+    <h1 id="formTitle">Localized Form Example</h1>
+
+    <!-- Language Selector -->
+    <div class="language-select">
+        <label for="language">Select Language:</label>
+        <select id="language" onchange="changeLanguage()">
+            <option value="en" selected>English</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+        </select>
+    </div>
+
+    <!-- Form -->
+    <form id="localizedForm" method="POST" action="/submit-form">
+        <div class="form-group">
+            <label id="nameLabel" for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+            <div class="error-message" id="errorName"></div>
+        </div>
+        <div class="form-group">
+            <label id="emailLabel" for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <div class="error-message" id="errorEmail"></div>
+        </div>
+        <div class="form-group">
+            <label id="dobLabel" for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob">
+        </div>
+        <div class="form-group">
+            <label id="amountLabel" for="amount">Amount:</label>
+            <input type="number" id="amount" name="amount" step="0.01" min="0">
+        </div>
+        <div class="form-group">
+            <label id="commentsLabel" for="comments">Comments:</label>
+            <textarea id="comments" name="comments" rows="4"></textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit" id="submitBtn">Submit</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    const translations = {
+        en: {
+            formTitle: "Localized Form Example",
+            nameLabel: "Full Name:",
+            emailLabel: "Email:",
+            dobLabel: "Date of Birth:",
+            amountLabel: "Amount:",
+            commentsLabel: "Comments:",
+            submitBtn: "Submit",
+            errorName: "Full Name is required.",
+            errorEmail: "Email is required."
+        },
+        es: {
+            formTitle: "Ejemplo de Formulario Localizado",
+            nameLabel: "Nombre Completo:",
+            emailLabel: "Correo Electrónico:",
+            dobLabel: "Fecha de Nacimiento:",
+            amountLabel: "Cantidad:",
+            commentsLabel: "Comentarios:",
+            submitBtn: "Enviar",
+            errorName: "Se requiere el nombre completo.",
+            errorEmail: "Se requiere el correo electrónico."
+        },
+        fr: {
+            formTitle: "Exemple de Formulaire Localisé",
+            nameLabel: "Nom Complet:",
+            emailLabel: "E-mail:",
+            dobLabel: "Date de Naissance:",
+            amountLabel: "Montant:",
+            commentsLabel: "Commentaires:",
+            submitBtn: "Soumettre",
+            errorName: "Le nom complet est requis.",
+            errorEmail: "L'email est requis."
+        }
+    };
+
+    function changeLanguage() {
+        const lang = document.getElementById('language').value;
+        const translation = translations[lang];
+
+        document.getElementById('formTitle').textContent = translation.formTitle;
+        document.getElementById('nameLabel').textContent = translation.nameLabel;
+        document.getElementById('emailLabel').textContent = translation.emailLabel;
+        document.getElementById('dobLabel').textContent = translation.dobLabel;
+        document.getElementById('amountLabel').textContent = translation.amountLabel;
+        document.getElementById('commentsLabel').textContent = translation.commentsLabel;
+        document.getElementById('submitBtn').textContent = translation.submitBtn;
+        document.getElementById('errorName').textContent = translation.errorName;
+        document.getElementById('errorEmail').textContent = translation.errorEmail;
+    }
+
+    document.getElementById('localizedForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const errorName = document.getElementById('errorName');
+        const errorEmail = document.getElementById('errorEmail');
+
+        const lang = document.getElementById('language').value;
+        const translation = translations[lang];
+
+        errorName.textContent = '';
+        errorEmail.textContent = '';
+
+        if (!name) {
+            errorName.textContent = translation.errorName;
+        }
+        if (!email) {
+            errorEmail.textContent = translation.errorEmail;
+        }
+
+        if (name && email) {
+            alert('Form submitted successfully!');
+        }
+    });
+</script>
+
+</body>
+</html>

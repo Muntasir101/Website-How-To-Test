@@ -1,0 +1,11 @@
+Summary of Form Functionalities Included:
+Mandatory Fields: Username is required and pre-populated with a default value.
+Optional Fields: Phone number field is optional.
+Field Format Constraints: Email field must contain an '@' symbol.
+Input Masking: Password field must have at least 6 characters.
+Conditional Fields: Address field appears based on a checkbox.
+Field Limits: Age must be between 18 and 100.
+Default Values: Event Date is pre-filled with a default value.
+Auto-Save: Auto-saves the value of a field every 5 seconds.
+CAPTCHA Simulation: Simple CAPTCHA check.
+Form Reset and Submission: Handles reset and validation with error messages.

@@ -1,0 +1,20 @@
+Description
+Currency Field:
+
+Input Pattern: The pattern accepts optional currency symbols ($), with commas separating thousands and a decimal point followed by two digits (e.g., $1,234.56 or 1234.56).
+Pattern: /^\$?\d{1,3}(,\d{3})*(\.\d{2})?$/
+Number Field:
+
+Input Pattern: Allows numbers with commas as thousand separators (e.g., 1,234 or 1234).
+Pattern: /^\d{1,3}(,\d{3})*$/
+Validation Logic:
+
+Currency Validation: Ensures the input matches the currency format with optional symbols and decimal places.
+Number Validation: Ensures the input matches the number format with optional comma separators.
+How It Works:
+
+Form Submission: On form submission, the script checks if the currency and number inputs match the respective patterns.
+Error Handling: Displays errors if the inputs do not match the expected formats.
+Additional Notes:
+Localization: For different locales, adapt the patterns according to the currency symbols and number formatting rules.
+Libraries: Consider using libraries like intl-input or cleave.js for more advanced formatting and validation.

@@ -1,0 +1,68 @@
+Validating Form Data Storage
+Validating form data storage involves ensuring that the data entered into a form is correctly saved and retrieved from the storage mechanism used. Here’s how to approach validating form data storage:
+
+1. Test Scenarios
+Scenario 1: Verify Data Storage
+
+Objective: Ensure that data entered into the form is stored correctly in the storage mechanism (e.g., localStorage, sessionStorage, database).
+Steps:
+Enter data into the form fields.
+Submit or save the form.
+Inspect the storage mechanism (e.g., using browser developer tools) to confirm that the data has been saved.
+Scenario 2: Validate Data Retrieval
+
+Objective: Ensure that stored data is retrieved correctly and populated into the form fields when the form page is loaded.
+Steps:
+Manually store data in the storage mechanism or submit the form to save data.
+Reload or revisit the form page.
+Check that the stored data is displayed in the form fields.
+Scenario 3: Check Data Consistency
+
+Objective: Ensure that the data remains consistent between the storage and the form.
+Steps:
+Store data in the form and then modify the data directly in storage (e.g., using browser developer tools).
+Reload or revisit the form page.
+Verify that the form reflects the modified data from storage.
+Scenario 4: Validate Data Security
+
+Objective: Ensure that sensitive data is stored securely and is not exposed or accessible inappropriately.
+Steps:
+Enter sensitive data (e.g., passwords) into the form.
+Inspect the storage mechanism to ensure that sensitive data is encrypted or obfuscated.
+Check that sensitive data is not exposed in client-side storage or developer tools.
+Scenario 5: Test Data Removal
+
+Objective: Ensure that data can be correctly removed from storage when required (e.g., upon form reset or user logout).
+Steps:
+Enter and store data in the form.
+Trigger data removal (e.g., click a reset button or log out).
+Verify that the data has been removed from the storage.
+2. How to Test
+Manual Testing:
+
+Fill Out the Form:
+
+Enter data into all fields of the form.
+Submit or Save:
+
+Complete the form submission or save action to store the data.
+Verify Storage:
+
+Open the browser’s developer tools and inspect the storage mechanism (e.g., localStorage, sessionStorage).
+Confirm that the data is correctly saved in the storage.
+Reload or Revisit:
+
+Refresh the form page or revisit it.
+Check that the data is retrieved from storage and correctly displayed in the form fields.
+Manual Data Modification:
+
+Modify the data directly in the storage mechanism (e.g., using developer tools).
+Reload the form page and verify that the updated data is displayed in the form fields.
+Check Security:
+
+Inspect the storage for sensitive data.
+Verify that sensitive data is encrypted or obfuscated as needed.
+Remove Data:
+
+Trigger data removal (e.g., using a reset button).
+Confirm that the data is no longer present in the storage.

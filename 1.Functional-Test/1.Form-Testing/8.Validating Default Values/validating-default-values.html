@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form with Default Values Validation</title>
+    <style>
+        header {
+            background-color: #333;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        header a:hover {
+            color: #ddd;
+        }
+		
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            line-height: 1.6;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-top: 50px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin: 10px 0 5px;
+        }
+        input[type="text"], input[type="number"], input[type="date"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #333;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="../index.html">Back to Home</a>
+    </header>
+	
+    <div class="container">
+        <h1>Registration Form with Default Values</h1>
+        <form id="defaultValuesForm">
+            <label for="username">Username (Default: JohnDoe)</label>
+            <input type="text" id="username" name="username" value="JohnDoe" required>
+            <span class="error" id="usernameError"></span>
+
+            <label for="age">Age (Default: 25)</label>
+            <input type="number" id="age" name="age" value="25" min="18" max="100" required>
+            <span class="error" id="ageError"></span>
+
+            <label for="eventDate">Event Date (Default: 2024-01-01)</label>
+            <input type="date" id="eventDate" name="eventDate" value="2024-01-01" min="2024-01-01" max="2024-12-31" required>
+            <span class="error" id="eventDateError"></span>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('defaultValuesForm').addEventListener('submit', function(event) {
+            // Prevent form submission
+            event.preventDefault();
+
+            // Clear previous error messages
+            document.getElementById('usernameError').textContent = '';
+            document.getElementById('ageError').textContent = '';
+            document.getElementById('eventDateError').textContent = '';
+
+            let isValid = true;
+
+            // Validate Username (Default Value)
+            const username = document.getElementById('username').value.trim();
+            if (username.length === 0) {
+                document.getElementById('usernameError').textContent = 'Username cannot be empty.';
+                isValid = false;
+            }
+
+            // Validate Age (Default Value)
+            const age = parseInt(document.getElementById('age').value, 10);
+            if (isNaN(age) || age < 18 || age > 100) {
+                document.getElementById('ageError').textContent = 'Age must be between 18 and 100.';
+                isValid = false;
+            }
+
+            // Validate Event Date (Default Value)
+            const eventDate = new Date(document.getElementById('eventDate').value);
+            const minDate = new Date('2024-01-01');
+            const maxDate = new Date('2024-12-31');
+            if (eventDate < minDate || eventDate > maxDate) {
+                document.getElementById('eventDateError').textContent = 'Event date must be between 2024-01-01 and 2024-12-31.';
+                isValid = false;
+            }
+
+            // If all validations pass, submit the form
+            if (isValid) {
+                alert('Form submitted successfully!');
+                this.submit();
+            }
+        });
+    </script>
+</body>
+</html>

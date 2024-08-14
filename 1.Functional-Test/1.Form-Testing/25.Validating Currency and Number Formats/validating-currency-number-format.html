@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency and Number Validation</title>
+    <style>
+        header {
+            background-color: #333;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        header a:hover {
+            color: #ddd;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-group button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .form-group button:hover {
+            background-color: #218838;
+        }
+        .form-group .error-message {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="../index.html">Back to Home</a>
+    </header>
+	
+
+<div class="container">
+    <h1>Currency and Number Validation</h1>
+
+    <form id="currencyForm" method="POST" action="/submit-form">
+        <div class="form-group">
+            <label for="currency">Amount (in USD):</label>
+            <input type="text" id="currency" name="currency" placeholder="$100.00" required>
+            <div class="error-message" id="errorCurrency"></div>
+        </div>
+        <div class="form-group">
+            <label for="number">Quantity:</label>
+            <input type="text" id="number" name="number" placeholder="1,234" required>
+            <div class="error-message" id="errorNumber"></div>
+        </div>
+        <div class="form-group">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    document.getElementById('currencyForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const currency = document.getElementById('currency').value.trim();
+        const number = document.getElementById('number').value.trim();
+
+        const errorCurrency = document.getElementById('errorCurrency');
+        const errorNumber = document.getElementById('errorNumber');
+
+        errorCurrency.textContent = '';
+        errorNumber.textContent = '';
+
+        let isValid = true;
+
+        // Validate currency format: $100.00 or 100.00
+        const currencyPattern = /^\$?\d{1,3}(,\d{3})*(\.\d{2})?$/;
+        if (!currencyPattern.test(currency)) {
+            errorCurrency.textContent = 'Invalid currency format. Use "$100.00" or "100.00".';
+            isValid = false;
+        }
+
+        // Validate number format: 1,234 or 1234
+        const numberPattern = /^\d{1,3}(,\d{3})*$/;
+        if (!numberPattern.test(number)) {
+            errorNumber.textContent = 'Invalid number format. Use "1,234" or "1234".';
+            isValid = false;
+        }
+
+        if (isValid) {
+            alert('Form submitted successfully!');
+        }
+    });
+</script>
+
+</body>
+</html>

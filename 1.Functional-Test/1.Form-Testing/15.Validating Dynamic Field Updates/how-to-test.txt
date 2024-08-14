@@ -1,0 +1,67 @@
+Validating Dynamic Field Updates involves ensuring that fields in a form that are updated based on user input or other dynamic conditions are correctly displayed, hidden, or modified according to the expected behavior. This ensures that the form remains functional and provides the correct options or fields based on the user's actions.
+
+1. Test Scenarios
+Scenario 1: Displaying/ Hiding Fields Based on User Input
+
+Objective: Verify that fields appear or disappear based on user input.
+Steps:
+Fill out or change inputs in fields that trigger dynamic updates (e.g., selecting an option from a dropdown).
+Verify that the appropriate fields are displayed or hidden according to the input.
+Scenario 2: Updating Field Values Based on Other Inputs
+
+Objective: Ensure that field values update dynamically based on changes in other fields.
+Steps:
+Enter data into fields that trigger updates in other fields.
+Verify that the dependent fields are updated correctly based on the changes.
+Scenario 3: Validating Dynamic Field Validation Rules
+
+Objective: Ensure that dynamic fields adhere to validation rules when they appear.
+Steps:
+Trigger the appearance of dynamic fields.
+Verify that these fields follow the correct validation rules (e.g., mandatory, format).
+Scenario 4: Testing Dynamic Field Dependencies
+
+Objective: Validate that fields dependent on other fields behave as expected.
+Steps:
+Fill out or change inputs in fields that affect other fields.
+Check if dependent fields react appropriately and maintain data integrity.
+Scenario 5: Cross-Browser and Device Testing
+
+Objective: Ensure dynamic field updates work consistently across different browsers and devices.
+Steps:
+Test the form in various browsers and devices.
+Verify that dynamic field behavior is consistent across all tested environments.
+2. How to Test
+Manual Testing:
+
+Prepare the Form:
+
+Load the form in a web browser.
+Test Field Display/Hide Logic:
+
+Interact with inputs that should trigger field changes.
+Check if fields appear or disappear as expected.
+Test Field Updates:
+
+Enter data into fields that trigger updates in other fields.
+Verify that the dependent fields update correctly.
+Test Validation Rules for Dynamic Fields:
+
+Trigger the display of dynamic fields.
+Ensure these fields follow the expected validation rules.
+Test Field Dependencies:
+
+Change inputs in fields that affect other fields.
+Check if dependent fields reflect the changes accurately.
+Cross-Browser and Device Testing:
+
+Test the form on different browsers and devices.
+Ensure that dynamic updates are consistent across environments.
+Automated Testing:
+
+WebDriver-Based Testing (e.g., Selenium):
+
+Automate interactions that trigger dynamic field updates and verify the changes.
+Testing Frameworks (e.g., Cypress):
+
+Use automated tests to check the behavior of dynamic fields and ensure they function as expected.

@@ -1,0 +1,21 @@
+Description
+Form Structure:
+
+Step 1: Personal Information.
+Step 2: Address Information.
+Step 3: Review and Submit.
+JavaScript Functions:
+
+showStep(step): Controls the visibility of the steps.
+nextStep(): Validates the current step and moves to the next.
+prevStep(): Moves to the previous step.
+validateCurrentStep(): Validates input data in the current step.
+submitForm(): Submits the form after validating the final step.
+Field Labels and Instructions:
+
+Labels: Clearly associated with their respective input fields.
+Error Messages: Displayed if validation fails.
+Navigation and Validation:
+
+Navigation: Users can move between steps and review information.
+Validation: Ensures that each step is completed correctly before proceeding.

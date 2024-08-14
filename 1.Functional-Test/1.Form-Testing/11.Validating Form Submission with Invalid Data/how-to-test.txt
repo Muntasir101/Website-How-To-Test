@@ -1,0 +1,65 @@
+Validating Form Submission with Invalid Data
+1. Test Scenarios
+Scenario 1: Missing Mandatory Fields
+
+Objective: Ensure that the form does not submit if mandatory fields are left empty.
+Steps:
+Leave one or more mandatory fields empty.
+Attempt to submit the form.
+Verify that the form does not submit and that appropriate error messages are displayed.
+Scenario 2: Invalid Field Formats
+
+Objective: Ensure that fields with specific format requirements (e.g., email, phone number) are validated correctly.
+Steps:
+Enter incorrect formats in fields that require specific formats (e.g., a malformed email address).
+Attempt to submit the form.
+Verify that the form does not submit and that validation errors are shown for the incorrectly formatted fields.
+Scenario 3: Out-of-Range Values
+
+Objective: Ensure that numeric or date fields accept only values within a specified range.
+Steps:
+Enter values outside the allowable range for numeric or date fields.
+Attempt to submit the form.
+Verify that the form does not submit and that appropriate error messages are displayed for out-of-range values.
+Scenario 4: Invalid Input Lengths
+
+Objective: Ensure that fields with length constraints (e.g., minimum and maximum length) are validated properly.
+Steps:
+Enter data that exceeds or does not meet the length constraints in fields.
+Attempt to submit the form.
+Verify that the form does not submit and that error messages are shown for invalid lengths.
+Scenario 5: Error Messages Display
+
+Objective: Ensure that error messages are clear, informative, and correctly positioned near the relevant fields.
+Steps:
+Trigger validation errors by entering invalid data.
+Verify that error messages are displayed next to or below the relevant fields and provide clear instructions on what needs to be corrected.
+2. How to Test
+Manual Testing:
+
+Prepare the Form:
+
+Load the form in a web browser.
+Input Invalid Data:
+
+For mandatory fields, leave them empty.
+For format-specific fields, enter data that does not match the required format.
+For range-restricted fields, enter values outside the permissible range.
+For length-constrained fields, enter data that is too short or too long.
+Attempt Submission:
+
+Click the submit button.
+Verify Form Behavior:
+
+Check that the form does not submit and remains on the same page.
+Ensure that appropriate error messages are displayed for each invalid input.
+Confirm that error messages are clear and informative.
+Check Error Message Placement:
+
+Ensure that error messages are positioned correctly near the relevant fields.
+Automated Testing:
+
+WebDriver-Based Testing (e.g., Selenium):
+Use WebDriver to automate the process of entering invalid data, attempting form submission, and verifying error messages.
+Testing Frameworks (e.g., Cypress):
+Automate form validation scenarios to check for correct behavior and error message displays.

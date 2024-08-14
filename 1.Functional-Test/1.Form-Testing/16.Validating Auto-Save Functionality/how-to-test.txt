@@ -1,0 +1,76 @@
+Validating Auto-Save Functionality involves ensuring that a form automatically saves user data periodically or during user interactions to prevent data loss. This is particularly useful for long forms or applications where users might be interrupted.
+
+1. Test Scenarios
+Scenario 1: Periodic Auto-Save
+
+Objective: Verify that the form data is automatically saved at regular intervals.
+Steps:
+Fill out the form with data.
+Wait for the auto-save interval to pass.
+Check if the data has been saved by refreshing the page or navigating away and returning to the form.
+Scenario 2: Auto-Save on Input Change
+
+Objective: Ensure that the form data is saved whenever the user makes changes to the input fields.
+Steps:
+Start filling out the form.
+Change data in any of the fields.
+Navigate away from the form or refresh the page.
+Check if the last entered data is preserved.
+Scenario 3: Auto-Save on Form Submission
+
+Objective: Verify that the form data is saved when the user submits the form, even if the submission process encounters errors.
+Steps:
+Fill out the form and submit it.
+Simulate a submission error (e.g., server error).
+Verify if the form data was saved and is preserved upon retrying submission.
+Scenario 4: Auto-Save During Session Timeout
+
+Objective: Ensure that data is saved automatically if the session is about to time out or is interrupted.
+Steps:
+Start filling out the form.
+Simulate a session timeout or interruption.
+Verify if the form data is saved and restored upon re-login or session recovery.
+Scenario 5: Auto-Save Confirmation
+
+Objective: Ensure that users receive confirmation or indication that their data has been saved automatically.
+Steps:
+Make changes to the form.
+Verify if there is any indication (e.g., a message or icon) that the data has been auto-saved.
+2. How to Test
+Manual Testing:
+
+Prepare the Form:
+
+Load the form in a web browser.
+Test Periodic Auto-Save:
+
+Fill out the form with data.
+Wait for the auto-save interval.
+Refresh the page or navigate away.
+Check if the data is retained.
+Test Auto-Save on Input Change:
+
+Make changes to form fields.
+Navigate away or refresh the page.
+Check if the changes are saved.
+Test Auto-Save on Form Submission:
+
+Complete the form and submit.
+Simulate an error during submission.
+Check if the form data is preserved.
+Test During Session Timeout:
+
+Fill out the form and simulate a timeout.
+Check if the data is saved and can be recovered.
+Check Auto-Save Confirmation:
+
+Make changes to the form.
+Verify if there’s any confirmation that the data has been auto-saved.
+Automated Testing:
+
+WebDriver-Based Testing (e.g., Selenium):
+
+Automate scenarios for periodic auto-save, input changes, and error handling to check if the data is correctly saved and restored.
+Testing Frameworks (e.g., Cypress):
+
+Write tests to simulate user interactions and check if auto-save functionality works as intended.

@@ -1,0 +1,17 @@
+Description
+Form Structure:
+
+Personal Information: Full Name, Email, Comments.
+JavaScript Functions:
+
+autoSave(): Saves form data to localStorage whenever any input changes.
+loadSavedData(): Loads and populates saved data from localStorage when the page loads.
+submitForm(): Simulates form submission, displays success or error messages, and clears auto-saved data upon successful submission.
+Auto-Save Implementation:
+
+The form data is saved to localStorage on every input change.
+Data is loaded from localStorage when the page is loaded, ensuring that previously entered data is retained.
+Validation and Feedback:
+
+Simple validation ensures that required fields are filled before submission.
+User receives feedback on successful submission or missing information.

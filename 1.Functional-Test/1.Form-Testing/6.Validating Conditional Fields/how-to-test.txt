@@ -1,0 +1,63 @@
+Validating Conditional Fields (e.g., Fields that appear based on other input)
+Example Scenario
+Consider a user registration form with conditional fields that appear based on user input. For instance, if a user selects "Yes" for a question asking if they want to receive newsletters, additional fields for specifying preferences should appear. These conditional fields must be validated properly according to their specific requirements.
+
+Test Scenarios
+Scenario 1: Conditional fields are displayed correctly based on user input
+
+Expected Result: When the condition is met (e.g., "Yes" is selected), the relevant fields should appear. When the condition is not met, the fields should be hidden.
+Scenario 2: Conditional fields are hidden and not required when the condition is not met
+
+Expected Result: If the condition is not met (e.g., "No" is selected), the conditional fields should be hidden and not affect the form submission or validation.
+Scenario 3: Validate required fields in conditional sections
+
+Expected Result: When the conditional fields are visible, they should be validated according to their rules (e.g., mandatory fields must be filled out).
+Scenario 4: Validate data entered in conditional fields
+
+Expected Result: Conditional fields should be validated according to their specific criteria (e.g., format, length) when they are visible.
+Scenario 5: Test form submission with conditional fields populated correctly
+
+Expected Result: If the conditional fields are visible and correctly populated, the form should be accepted without validation errors.
+Scenario 6: Test form submission with conditional fields left empty or filled incorrectly
+
+Expected Result: If the conditional fields are visible but not correctly populated, the form should display appropriate error messages and prevent submission.
+Scenario 7: Verify that the form handles dynamic changes correctly
+
+Expected Result: Changing the input that affects the conditional fields should correctly show or hide the relevant fields and validate them accordingly.
+Scenario 8: Test the form with JavaScript disabled (if applicable)
+
+Expected Result: If JavaScript is disabled, the form should still function properly, either by falling back to server-side logic or by ensuring that conditional logic does not break the form.
+Scenario 9: Test on different browsers and devices to ensure consistent behavior
+
+Expected Result: Conditional fields should consistently show, hide, and validate correctly across different browsers and devices.
+Scenario 10: Verify accessibility of conditional fields
+
+Expected Result: Conditional fields should be accessible via screen readers and other assistive technologies when they are visible.
+How to Test
+Manual Testing:
+
+Interactive Testing:
+Manually interact with the form to ensure conditional fields appear and disappear based on input.
+Validation Checks:
+Check that required and format validation for conditional fields works correctly when the fields are visible.
+Automated Testing:
+
+Using Selenium:
+Write test scripts to simulate different user inputs and verify that conditional fields appear, disappear, and validate correctly.
+Using Cypress:
+Create automated tests to check the visibility and validation of conditional fields based on various inputs.
+Cross-Browser Testing:
+
+Use tools like BrowserStack or Sauce Labs to ensure that conditional logic and field validation behave consistently across different browsers and devices.
+Accessibility Testing:
+
+Use tools like Axe or WAVE to ensure that conditional fields are accessible and properly announced by screen readers.
+JavaScript Disabled Testing:
+
+Test the form's behavior with JavaScript disabled to ensure that conditional logic is handled appropriately either via server-side validation or fallback mechanisms.
+Tools to Use
+Selenium WebDriver: Automate the testing of conditional fields and their validation across different browsers.
+Cypress: Provides a powerful API for testing conditional field behavior and validation.
+BrowserStack or Sauce Labs: Perform cross-browser and device testing to ensure consistent functionality.
+Axe Accessibility Tool: Validate the accessibility of conditional fields and ensure they are properly announced by screen readers.
+WAVE Accessibility Tool: Check for accessibility issues related to conditional fields.

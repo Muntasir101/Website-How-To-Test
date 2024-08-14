@@ -1,0 +1,72 @@
+Validating Form Validation Messages and Error Handling involves ensuring that the form provides clear, actionable feedback when users enter invalid data or leave mandatory fields empty. This includes verifying the accuracy and visibility of error messages and ensuring that they guide users in correcting their inputs.
+
+1. Test Scenarios
+Scenario 1: Missing Mandatory Fields
+
+Objective: Verify that error messages are displayed when mandatory fields are left empty.
+Steps:
+Leave one or more mandatory fields empty.
+Attempt to submit the form.
+Confirm that error messages are shown for each empty mandatory field.
+Scenario 2: Invalid Field Formats
+
+Objective: Ensure that fields with format constraints (e.g., email, phone number) display appropriate error messages when incorrect formats are entered.
+Steps:
+Enter invalid data in fields with format constraints.
+Attempt to submit the form.
+Verify that error messages are shown for each field with invalid data.
+Scenario 3: Out-of-Range Values
+
+Objective: Check that fields with range constraints (e.g., numbers, dates) display error messages when values fall outside the allowable range.
+Steps:
+Enter values outside the allowed range in relevant fields.
+Attempt to submit the form.
+Verify that error messages are displayed for out-of-range values.
+Scenario 4: Length Constraints
+
+Objective: Ensure that fields with length constraints display error messages when data does not meet the minimum or maximum length requirements.
+Steps:
+Enter data that is too short or too long in length-constrained fields.
+Attempt to submit the form.
+Confirm that error messages are shown for invalid lengths.
+Scenario 5: Error Message Placement and Clarity
+
+Objective: Verify that error messages are placed near the relevant fields and are clear and understandable.
+Steps:
+Trigger validation errors by entering invalid data.
+Check the placement of error messages relative to each field.
+Ensure that error messages are clear and provide guidance on how to correct the errors.
+2. How to Test
+Manual Testing:
+
+Prepare the Form:
+
+Load the form in a web browser.
+Test Missing Mandatory Fields:
+
+Leave mandatory fields empty and submit the form.
+Verify that error messages are displayed for each missing mandatory field.
+Test Invalid Field Formats:
+
+Enter invalid data in format-specific fields (e.g., a malformed email address) and submit the form.
+Verify that appropriate error messages are shown.
+Test Out-of-Range Values:
+
+Enter values outside the permissible range for numeric or date fields and submit the form.
+Confirm that error messages are displayed for out-of-range values.
+Test Length Constraints:
+
+Enter data that does not meet the length constraints in relevant fields and submit the form.
+Verify that error messages are shown for invalid lengths.
+Check Error Message Placement and Clarity:
+
+Trigger validation errors and check that error messages are clearly placed near the relevant fields.
+Ensure that the messages are understandable and provide actionable feedback.
+Automated Testing:
+
+WebDriver-Based Testing (e.g., Selenium):
+
+Automate the process of entering invalid data, attempting form submission, and verifying that appropriate error messages are displayed.
+Testing Frameworks (e.g., Cypress):
+
+Automate tests to ensure that validation messages are accurate, correctly placed, and provide clear instructions for correcting errors.

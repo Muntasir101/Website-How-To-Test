@@ -1,0 +1,66 @@
+Checking for Duplicate Data Submission involves ensuring that the form can detect and handle instances where the same data is submitted more than once. This is important for maintaining data integrity and preventing redundant or duplicate entries.
+
+1. Test Scenarios
+Scenario 1: Duplicate Submissions of Identical Data
+
+Objective: Ensure that the form detects and prevents submission of identical data multiple times.
+Steps:
+Fill out the form with a set of data.
+Submit the form.
+Without changing any data, submit the form again.
+Verify that the system either prevents the duplicate submission or alerts the user about the duplicate data.
+Scenario 2: Duplicate Entries Check on Server
+
+Objective: Ensure that the server-side logic correctly handles duplicate data submissions.
+Steps:
+Submit a form with a unique set of data.
+Submit the same form data again.
+Check the server logs or database to verify that duplicate data is either prevented or handled as per the application's requirements (e.g., by merging, overwriting, or flagging as a duplicate).
+Scenario 3: Duplicate Data in Different Forms
+
+Objective: Check if duplicate data submissions are detected even if they come from different forms or different sessions.
+Steps:
+Submit the form with a set of data.
+In a new session or different form, attempt to submit the same data.
+Verify that the system correctly identifies the duplicate submission.
+Scenario 4: User Notification of Duplicate Data
+
+Objective: Ensure that users are notified if they attempt to submit duplicate data.
+Steps:
+Submit the form with specific data.
+Attempt to submit the same data again.
+Verify that an appropriate message is displayed to inform the user of the duplicate submission.
+2. How to Test
+Manual Testing:
+
+Prepare the Form:
+
+Load the form in a web browser.
+Test Duplicate Submissions:
+
+Fill out the form with unique data.
+Submit the form.
+Without changing any data, submit the form again.
+Check if the form submission is prevented or if the user is alerted about the duplicate.
+Test Server-Side Handling:
+
+Submit unique data.
+Submit the same data again.
+Check the server to ensure that duplicate data handling is as expected (e.g., not creating duplicate records).
+Test Different Sessions or Forms:
+
+Submit data from one session.
+Try submitting the same data from a different session or a different form.
+Check for duplicate detection across sessions or forms.
+Check User Notification:
+
+Submit data and attempt duplicate submission.
+Ensure that the system displays a clear and informative message about the duplicate data.
+Automated Testing:
+
+WebDriver-Based Testing (e.g., Selenium):
+
+Automate the process of filling out the form, submitting it, and checking for duplicate submission prevention or user alerts.
+Testing Frameworks (e.g., Cypress):
+
+Automate tests to verify that duplicate data submissions are handled correctly and that users are notified appropriately.

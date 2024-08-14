@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>International Address and Phone Number Validation</title>
+    <style>
+        header {
+            background-color: #333;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        header a:hover {
+            color: #ddd;
+        }
+		
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-group button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .form-group button:hover {
+            background-color: #218838;
+        }
+        .form-group .error-message {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="../index.html">Back to Home</a>
+    </header>
+	
+
+<div class="container">
+    <h1>International Address and Phone Number Validation</h1>
+
+    <form id="internationalForm" method="POST" action="/submit-form">
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" placeholder="Enter your address" required>
+            <div class="error-message" id="errorAddress"></div>
+        </div>
+        <div class="form-group">
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" placeholder="Enter your city" required>
+            <div class="error-message" id="errorCity"></div>
+        </div>
+        <div class="form-group">
+            <label for="postalCode">Postal Code:</label>
+            <input type="text" id="postalCode" name="postalCode" placeholder="Enter your postal code" required>
+            <div class="error-message" id="errorPostalCode"></div>
+        </div>
+        <div class="form-group">
+            <label for="country">Country:</label>
+            <select id="country" name="country" required>
+                <option value="">Select your country</option>
+                <option value="us">United States</option>
+                <option value="uk">United Kingdom</option>
+                <option value="jp">Japan</option>
+                <option value="in">Bangladesh</option>
+                <!-- Add more countries as needed -->
+            </select>
+            <div class="error-message" id="errorCountry"></div>
+        </div>
+        <div class="form-group">
+            <label for="countryCode">Country Code:</label>
+            <input type="text" id="countryCode" name="countryCode" placeholder="+1" required>
+            <div class="error-message" id="errorCountryCode"></div>
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number" required>
+            <div class="error-message" id="errorPhoneNumber"></div>
+        </div>
+        <div class="form-group">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    // Country-specific phone number validation patterns
+    const countryPatterns = {
+        'us': /^\+1\d{10}$/,
+        'uk': /^\+44\d{10}$/,
+        'jp': /^\+81\d{10}$/,
+        'in': /^\+880\d{10}$/,
+        // Add patterns for more countries as needed
+    };
+
+    document.getElementById('internationalForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const address = document.getElementById('address').value.trim();
+        const city = document.getElementById('city').value.trim();
+        const postalCode = document.getElementById('postalCode').value.trim();
+        const country = document.getElementById('country').value;
+        const countryCode = document.getElementById('countryCode').value.trim();
+        const phoneNumber = document.getElementById('phoneNumber').value.trim();
+
+        const errorAddress = document.getElementById('errorAddress');
+        const errorCity = document.getElementById('errorCity');
+        const errorPostalCode = document.getElementById('errorPostalCode');
+        const errorCountry = document.getElementById('errorCountry');
+        const errorCountryCode = document.getElementById('errorCountryCode');
+        const errorPhoneNumber = document.getElementById('errorPhoneNumber');
+
+        errorAddress.textContent = '';
+        errorCity.textContent = '';
+        errorPostalCode.textContent = '';
+        errorCountry.textContent = '';
+        errorCountryCode.textContent = '';
+        errorPhoneNumber.textContent = '';
+
+        let isValid = true;
+
+        if (!address) {
+            errorAddress.textContent = 'Address is required.';
+            isValid = false;
+        }
+        if (!city) {
+            errorCity.textContent = 'City is required.';
+            isValid = false;
+        }
+        if (!postalCode) {
+            errorPostalCode.textContent = 'Postal Code is required.';
+            isValid = false;
+        }
+        if (!country) {
+            errorCountry.textContent = 'Country is required.';
+            isValid = false;
+        }
+        if (!countryCode) {
+            errorCountryCode.textContent = 'Country Code is required.';
+            isValid = false;
+        } else if (!/^(\+\d{1,3})$/.test(countryCode)) {
+            errorCountryCode.textContent = 'Country Code must be in the format "+123".';
+            isValid = false;
+        }
+
+        // Validate phone number based on country code
+        if (isValid && countryPatterns[country]) {
+            const fullPhoneNumber = countryCode + phoneNumber;
+            if (!countryPatterns[country].test(fullPhoneNumber)) {
+                errorPhoneNumber.textContent = 'Phone Number is invalid for the selected country.';
+                isValid = false;
+            }
+        } else {
+            errorPhoneNumber.textContent = 'Invalid country code or phone number format.';
+            isValid = false;
+        }
+
+        if (isValid) {
+            alert('Form submitted successfully!');
+        }
+    });
+</script>
+
+</body>
+</html>

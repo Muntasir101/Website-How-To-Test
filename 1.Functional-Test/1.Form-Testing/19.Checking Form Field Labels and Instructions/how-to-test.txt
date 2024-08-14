@@ -1,0 +1,75 @@
+Checking Form Field Labels and Instructions involves verifying that each form field has clear, accurate labels and instructions to guide users in providing the required information. This ensures usability and helps prevent user errors.
+
+1. Test Scenarios
+Scenario 1: Label Visibility
+
+Objective: Ensure that every form field has a visible and correctly associated label.
+Steps:
+Inspect the form to confirm that each field has a corresponding label.
+Verify that the label text is visible and clearly describes the field’s purpose.
+Scenario 2: Label Association
+
+Objective: Check that each label is correctly associated with its respective input field.
+Steps:
+Inspect the HTML code to ensure that each label’s for attribute matches the id of the corresponding input field.
+Verify that clicking on the label focuses the associated input field.
+Scenario 3: Instructions and Help Text
+
+Objective: Ensure that instructions and help text are provided where necessary.
+Steps:
+Identify fields that require additional instructions or help text.
+Verify that the instructions are visible, correctly positioned, and easy to understand.
+Scenario 4: Instruction Clarity
+
+Objective: Check that instructions are clear, concise, and helpful.
+Steps:
+Review the instructions for clarity and completeness.
+Ensure that instructions are easy to follow and effectively guide the user in filling out the form.
+Scenario 5: Error Messages and Validation Instructions
+
+Objective: Verify that error messages and validation instructions are clear and helpful.
+Steps:
+Trigger validation errors by entering incorrect data.
+Check if error messages are displayed near the relevant fields.
+Verify that error messages clearly indicate what needs to be corrected.
+Scenario 6: Language and Terminology
+
+Objective: Ensure that labels and instructions use consistent language and terminology.
+Steps:
+Review labels and instructions for consistency in terminology.
+Ensure that language used is appropriate for the target audience.
+2. How to Test
+Manual Testing:
+
+Prepare the Form:
+
+Load the form in a web browser.
+Check Label Visibility:
+
+Inspect each form field to ensure that labels are visible and correctly positioned.
+Check Label Association:
+
+Click on each label and verify that it focuses on the correct input field.
+Inspect the HTML to ensure proper association between labels and fields.
+Check Instructions and Help Text:
+
+Review fields with additional instructions or help text.
+Verify that the instructions are clear and placed appropriately.
+Check Instruction Clarity:
+
+Read through instructions and help text for clarity and helpfulness.
+Check Error Messages and Validation Instructions:
+
+Enter invalid data to trigger validation errors.
+Ensure that error messages are clear and indicate the correct action.
+Check Language and Terminology:
+
+Review labels and instructions for consistency and appropriateness of language.
+Automated Testing:
+
+Accessibility Testing Tools (e.g., Axe, Lighthouse):
+
+Use tools to check for accessibility issues, including label associations and visible instructions.
+Visual Testing Tools (e.g., Percy, Applitools):
+
+Capture visual snapshots of the form to verify that labels and instructions are correctly displayed.

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submission with Invalid Data</title>
+    <style>
+        header {
+            background-color: #333;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        header a:hover {
+            color: #ddd;
+        }
+		
+        .form-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .form-group .error {
+            color: red;
+            font-size: 0.875em;
+        }
+        .form-group button {
+            padding: 10px 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="../index.html">Back to Home</a>
+    </header>
+	
+
+<div class="form-container">
+    <h2>Form Submission Test</h2>
+    <form id="testForm">
+        <div class="form-group">
+            <label for="username">Username (Required):</label>
+            <input type="text" id="username" name="username" required>
+            <div class="error" id="usernameError"></div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email (Required, must be a valid email address):</label>
+            <input type="email" id="email" name="email" required>
+            <div class="error" id="emailError"></div>
+        </div>
+        <div class="form-group">
+            <label for="age">Age (Must be between 0 and 120):</label>
+            <input type="number" id="age" name="age" min="0" max="120">
+            <div class="error" id="ageError"></div>
+        </div>
+        <div class="form-group">
+            <label for="password">Password (Required, min 6 characters):</label>
+            <input type="password" id="password" name="password" minlength="6" required>
+            <div class="error" id="passwordError"></div>
+        </div>
+        <div class="form-group">
+            <button type="button" onclick="validateForm()">Submit</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    function validateForm() {
+        // Clear previous errors
+        document.getElementById('usernameError').textContent = '';
+        document.getElementById('emailError').textContent = '';
+        document.getElementById('ageError').textContent = '';
+        document.getElementById('passwordError').textContent = '';
+
+        let isValid = true;
+
+        // Get form values
+        const username = document.getElementById('username').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const age = document.getElementById('age').value.trim();
+        const password = document.getElementById('password').value.trim();
+
+        // Validate Username
+        if (!username) {
+            document.getElementById('usernameError').textContent = 'Username is required.';
+            isValid = false;
+        }
+
+        // Validate Email
+        if (!email) {
+            document.getElementById('emailError').textContent = 'Email is required.';
+            isValid = false;
+        } else if (!validateEmail(email)) {
+            document.getElementById('emailError').textContent = 'Invalid email format.';
+            isValid = false;
+        }
+
+        // Validate Age
+        if (age && (age < 0 || age > 120)) {
+            document.getElementById('ageError').textContent = 'Age must be between 0 and 120.';
+            isValid = false;
+        }
+
+        // Validate Password
+        if (!password) {
+            document.getElementById('passwordError').textContent = 'Password is required.';
+            isValid = false;
+        } else if (password.length < 6) {
+            document.getElementById('passwordError').textContent = 'Password must be at least 6 characters long.';
+            isValid = false;
+        }
+
+        if (isValid) {
+            alert('Form submitted successfully!');
+        }
+    }
+
+    function validateEmail(email) {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailPattern.test(email);
+    }
+</script>
+
+</body>
+</html>

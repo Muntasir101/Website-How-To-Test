@@ -1,0 +1,66 @@
+Example Scenario
+You have a registration form on a website where certain fields like "First Name," "Email Address," and "Password" are mandatory. Users must fill out these fields to submit the form successfully.
+
+Test Scenarios
+Scenario 1: Submit the form with all mandatory fields left blank
+
+Expected Result: The form should not be submitted, and validation messages should be displayed next to each mandatory field indicating that the field is required.
+Scenario 2: Fill in some mandatory fields and leave others blank
+
+Expected Result: The form should not be submitted, and validation messages should be displayed only for the mandatory fields that are left blank.
+Scenario 3: Fill in all mandatory fields with valid data
+
+Expected Result: The form should be submitted successfully without any validation errors.
+Scenario 4: Attempt to submit the form with JavaScript disabled
+
+Expected Result: The server-side validation should prevent form submission and return errors for missing mandatory fields.
+Scenario 5: Test mandatory fields on different browsers and devices
+
+Expected Result: Validation should work consistently across all browsers and devices.
+Scenario 6: Attempt to bypass mandatory field validation by directly manipulating the form using browser developer tools
+
+Expected Result: The form should still enforce validation, and the submission should be blocked if mandatory fields are empty.
+Scenario 7: Validate that the correct error message is displayed when a mandatory field is not filled out
+
+Expected Result: Each mandatory field should have a clear, user-friendly error message when left blank.
+How to Test
+Manual Testing:
+
+Open the form in different browsers and devices.
+Attempt to submit the form by leaving mandatory fields blank.
+Observe the error messages and ensure the form does not submit.
+Fill in the mandatory fields and ensure the form submits correctly.
+Test with JavaScript disabled to ensure server-side validation is in place.
+Attempt to manipulate form fields using browser developer tools and ensure validation is enforced.
+Automated Testing:
+
+Using Selenium:
+Write test scripts that automate the submission of the form with and without mandatory fields filled in.
+Verify that validation messages appear as expected.
+Using Cypress:
+Create tests that fill out the form partially and submit it.
+Check that appropriate error messages are displayed for each empty mandatory field.
+Using TestCafe:
+Test mandatory fields across different browsers by writing cross-browser scripts to ensure consistency.
+Tools to Use
+Selenium WebDriver:
+
+Great for automating web applications for testing purposes.
+Supports multiple programming languages (Java, Python, C#, etc.).
+Cypress:
+
+A front-end testing tool built for modern web applications.
+Offers easy setup and a robust API for writing tests.
+TestCafe:
+
+A tool for testing web applications that supports multiple browsers and devices.
+Easy to set up and doesn't require WebDriver or browser plugins.
+Browser Developer Tools:
+
+Use for manual testing, especially for manipulating form fields and testing behavior with JavaScript disabled.
+Accessibility Testing Tools:
+
+Tools like Axe or WAVE can be used to ensure that error messages for mandatory fields are accessible to users with disabilities.
+Cross-Browser Testing Tools:
+
+BrowserStack or Sauce Labs to test form validation across various browsers and devices.

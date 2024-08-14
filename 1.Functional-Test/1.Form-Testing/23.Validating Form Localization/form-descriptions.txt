@@ -1,0 +1,11 @@
+Description
+Language Support:
+
+The translations object holds language-specific strings for form labels and messages.
+The changeLanguage() function updates form content based on the selected language.
+Form Submission Handling:
+
+Error messages are updated according to the selected language.
+How It Works
+Language Selector: When a user selects a different language, the changeLanguage() function updates the form content with the appropriate translations.
+Form Validation: Error messages are displayed in the selected language.

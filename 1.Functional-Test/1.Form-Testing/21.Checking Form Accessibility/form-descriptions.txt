@@ -1,0 +1,14 @@
+Description
+Accessibility Features:
+
+ARIA Attributes:
+aria-required: Indicates required fields.
+aria-describedby: Associates help text with fields.
+role="alert": Provides error message alerts to screen readers.
+Labels and Instructions: Clearly associated with their fields and include help text for additional guidance.
+JavaScript Functions:
+
+submitForm(): Handles form submission, performs validation, and provides feedback.
+Error Handling:
+
+Error Messages: Displayed in a way that is accessible and clear, with appropriate ARIA roles.

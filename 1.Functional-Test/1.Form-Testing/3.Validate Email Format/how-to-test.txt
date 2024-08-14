@@ -1,0 +1,60 @@
+Example: Validating Field Format Constraints
+Example Scenario
+Consider a user registration form where specific fields, such as "Email Address" and "Phone Number," require strict formatting. For instance, the email must follow the standard email format (e.g., example@domain.com), and the phone number must follow a specific format (e.g., 123-456-7890).
+
+Test Scenarios
+Scenario 1: Enter a valid email address and phone number
+
+Expected Result: The form should accept the input and allow submission without any error messages.
+Scenario 2: Enter an invalid email address (e.g., user@domain)
+
+Expected Result: The form should not allow submission and should display an error message indicating that the email format is incorrect.
+Scenario 3: Enter an invalid phone number (e.g., 123-45-678)
+
+Expected Result: The form should not allow submission and should display an error message indicating that the phone number format is incorrect.
+Scenario 4: Submit the form with valid email and phone number but leave another mandatory field blank
+
+Expected Result: The form should not be submitted, but the validation messages should only indicate the missing mandatory field, not the correctly formatted email and phone number.
+Scenario 5: Enter a valid phone number but in a different format (e.g., (123) 456-7890)
+
+Expected Result: The form should either accept the alternative format if allowed or display an error message if the format must strictly match 123-456-7890.
+Scenario 6: Test email and phone number fields on different browsers and devices
+
+Expected Result: The format validation should work consistently across all supported browsers and devices.
+Scenario 7: Validate the handling of incorrectly formatted fields when autofill is used
+
+Expected Result: The form should correctly validate autofill data in fields requiring specific formats.
+How to Test
+Manual Testing:
+
+Manually input both valid and invalid data into the fields requiring format constraints.
+Attempt form submission and observe whether the form behaves as expected based on the format of the input.
+Test the form on various devices and browsers to ensure consistent behavior.
+Automated Testing:
+
+Using Selenium:
+Write test scripts that automate the input of various formats into the email and phone number fields.
+Verify that the form rejects incorrect formats and accepts valid ones.
+Using Cypress:
+Create tests that specifically target format constraints, checking for proper validation messages when incorrect formats are entered.
+Using TestCafe:
+Test format constraints across different browsers and devices by writing cross-browser scripts to ensure consistent behavior.
+Accessibility Testing:
+
+Use tools like Axe to ensure that error messages for format constraints are accessible and correctly announced by screen readers.
+Cross-Browser Testing:
+
+Tools like BrowserStack or Sauce Labs can be used to verify that format validation behaves consistently across all supported browsers and devices.
+Testing with Autofill:
+
+Test how browsers’ autofill functionality handles fields with strict format constraints and ensure that incorrect formats are still caught by validation.
+Tools to Use
+Selenium WebDriver: Automate testing for various format constraints across multiple browsers and devices.
+
+Cypress: Robust API for testing specific field constraints and verifying that error messages are triggered as expected.
+
+TestCafe: Useful for cross-browser testing and ensuring consistent format validation across environments.
+
+Axe Accessibility Tool: Ensure error messages related to format constraints are accessible.
+
+BrowserStack or Sauce Labs: Perform cross-browser and device testing to ensure format constraints are consistently enforced.

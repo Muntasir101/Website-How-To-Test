@@ -1,0 +1,11 @@
+Description
+Responsive Design:
+
+Media Queries: Adjusts padding and font sizes for different screen sizes.
+Mobile and Tablet Views: Ensures form elements are appropriately sized and spaced.
+JavaScript Function:
+
+Form Submission Handling: Performs basic validation and displays alerts.
+CSS Styling:
+
+Adaptive Layout: Adjusts form appearance based on screen size.

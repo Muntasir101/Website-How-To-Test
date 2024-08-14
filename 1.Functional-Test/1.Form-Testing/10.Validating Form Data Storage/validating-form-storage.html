@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Data Storage Test</title>
+    <style>
+        header {
+            background-color: #333;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        header a:hover {
+            color: #ddd;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .form-group button {
+            padding: 10px 15px;
+            margin-right: 10px;
+        }
+        #retrievedData {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="../index.html">Back to Home</a>
+    </header>
+	
+
+<div class="form-container">
+    <h2>Form Data Storage Test</h2>
+    <form id="testForm">
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" min="0" max="120">
+        </div>
+        <div class="form-group">
+            <button type="button" onclick="saveData()">Save</button>
+            <button type="button" onclick="resetForm()">Reset</button>
+        </div>
+    </form>
+
+    <div id="retrievedData">
+        <h3>Retrieved Data</h3>
+        <p><strong>Username:</strong> <span id="storedUsername"></span></p>
+        <p><strong>Email:</strong> <span id="storedEmail"></span></p>
+        <p><strong>Age:</strong> <span id="storedAge"></span></p>
+    </div>
+</div>
+
+<script>
+    // Function to save form data to localStorage
+    function saveData() {
+        const username = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
+        const age = document.getElementById('age').value;
+
+        // Store data in localStorage
+        localStorage.setItem('username', username);
+        localStorage.setItem('email', email);
+        localStorage.setItem('age', age);
+
+        // Update displayed data
+        displayStoredData();
+    }
+
+    // Function to reset form and clear localStorage
+    function resetForm() {
+        document.getElementById('testForm').reset();
+        localStorage.removeItem('username');
+        localStorage.removeItem('email');
+        localStorage.removeItem('age');
+
+        // Clear displayed data
+        displayStoredData();
+    }
+
+    // Function to display stored data
+    function displayStoredData() {
+        const storedUsername = localStorage.getItem('username') || 'No data';
+        const storedEmail = localStorage.getItem('email') || 'No data';
+        const storedAge = localStorage.getItem('age') || 'No data';
+
+        document.getElementById('storedUsername').textContent = storedUsername;
+        document.getElementById('storedEmail').textContent = storedEmail;
+        document.getElementById('storedAge').textContent = storedAge;
+    }
+
+    // Display data on page load
+    window.onload = displayStoredData;
+</script>
+
+</body>
+</html>

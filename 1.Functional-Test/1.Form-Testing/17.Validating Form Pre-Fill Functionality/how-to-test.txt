@@ -1,0 +1,69 @@
+Validating Form Pre-Fill Functionality involves ensuring that a form can automatically populate fields with previously entered data, such as data saved in cookies, localStorage, or from previous submissions. This functionality enhances user experience by reducing the need for repeated data entry.
+
+1. Test Scenarios
+Scenario 1: Pre-Fill from Cookies
+
+Objective: Verify that form fields are pre-filled with data stored in cookies.
+Steps:
+Enter data into the form fields and submit the form.
+Set cookies with the form data (simulate this using browser developer tools or a script).
+Refresh or reopen the form.
+Check if the form fields are pre-filled with the data from cookies.
+Scenario 2: Pre-Fill from Local Storage
+
+Objective: Ensure that form fields are pre-filled with data stored in localStorage.
+Steps:
+Enter data into the form fields and submit or save it.
+Store the form data in localStorage (simulate this using browser developer tools or a script).
+Refresh or reopen the form.
+Verify if the form fields are pre-filled with the data from localStorage.
+Scenario 3: Pre-Fill from Previous Submissions
+
+Objective: Check if the form fields are pre-filled with data from a previous submission (e.g., user profile data).
+Steps:
+Submit a form with user data.
+Ensure that the server or client-side script saves the submitted data.
+Access the form again (e.g., via a profile update page).
+Verify if the form fields are pre-filled with the previously submitted data.
+Scenario 4: Pre-Fill on User Return
+
+Objective: Ensure that the form fields are pre-filled with data when the user returns to the form after a period of inactivity.
+Steps:
+Fill out the form and save data in cookies or localStorage.
+Close the browser or navigate away.
+Revisit the form.
+Verify if the fields are pre-filled with the saved data.
+2. How to Test
+Manual Testing:
+
+Prepare the Form:
+
+Load the form in a web browser.
+Test Pre-Fill from Cookies:
+
+Enter and submit form data.
+Manually set cookies with the form data or use a script.
+Refresh the page and check if the data is pre-filled.
+Test Pre-Fill from Local Storage:
+
+Enter and submit form data.
+Store the data in localStorage.
+Refresh or revisit the form and verify if the data is pre-filled.
+Test Pre-Fill from Previous Submissions:
+
+Submit the form with data.
+Ensure the data is saved.
+Access the form again and check for pre-filled data.
+Test Pre-Fill on User Return:
+
+Save form data in cookies or localStorage.
+Close and reopen the browser.
+Revisit the form and verify if the data is pre-filled.
+Automated Testing:
+
+WebDriver-Based Testing (e.g., Selenium):
+
+Automate scenarios to check if the form fields are correctly pre-filled with data from cookies, localStorage, or previous submissions.
+Testing Frameworks (e.g., Cypress):
+
+Write automated tests to simulate user interactions and verify that pre-fill functionality works as intended.

@@ -1,0 +1,16 @@
+Description
+Form Structure:
+
+Personal Information: Full Name, Email, Comments.
+JavaScript Functions:
+
+submitForm(): Simulates form submission and saves a flag in localStorage to indicate that the form has been submitted.
+checkFormStatus(): Checks if the form has already been submitted and displays a message if it has. Also disables form fields to prevent further submissions.
+disableForm(): Disables form fields to prevent further user interactions.
+Resubmission Handling:
+
+After Submission: The form stores a flag in localStorage to indicate that it has been submitted. On page load, it checks this flag and prevents further submissions if necessary.
+Validation and Feedback:
+
+Provides feedback on successful submission or errors.
+Disables the form after submission to prevent duplicate entries.

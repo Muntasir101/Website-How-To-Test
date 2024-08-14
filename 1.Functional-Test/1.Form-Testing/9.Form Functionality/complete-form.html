@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Form Example</title>
+    <style>
+        header {
+            background-color: #333;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        header a:hover {
+            color: #ddd;
+        }
+		
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            line-height: 1.6;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-top: 50px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin: 10px 0 5px;
+        }
+        input[type="text"], input[type="email"], input[type="number"], input[type="date"], input[type="password"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #333;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        .dynamic-field {
+            margin-top: 20px;
+        }
+        .dynamic-field p {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="../index.html">Back to Home</a>
+    </header>
+	
+    <div class="container">
+        <h1>Comprehensive Form Example</h1>
+        <form id="exampleForm">
+            <!-- Mandatory Field -->
+            <label for="username">Username (Mandatory, Default: JohnDoe)</label>
+            <input type="text" id="username" name="username" value="JohnDoe" required>
+            <span class="error" id="usernameError"></span>
+
+            <!-- Optional Field -->
+            <label for="phone">Phone (Optional)</label>
+            <input type="text" id="phone" name="phone" placeholder="Enter your phone number (e.g., +1234567890)">
+            <span class="error" id="phoneError"></span>
+
+            <!-- Email Field with Format Constraint -->
+            <label for="email">Email (Required)</label>
+            <input type="email" id="email" name="email" required>
+            <span class="error" id="emailError"></span>
+
+            <!-- Password Field with Masking -->
+            <label for="password">Password (Required, Min Length 6)</label>
+            <input type="password" id="password" name="password" minlength="6" required>
+            <span class="error" id="passwordError"></span>
+
+            <!-- Number Field with Min and Max Values -->
+            <label for="age">Age (Min 18, Max 100)</label>
+            <input type="number" id="age" name="age" min="18" max="100" required>
+            <span class="error" id="ageError"></span>
+
+            <!-- Date Field with Default Value -->
+            <label for="eventDate">Event Date (Default: 2024-01-01)</label>
+            <input type="date" id="eventDate" name="eventDate" value="2024-01-01" min="2024-01-01" max="2024-12-31" required>
+            <span class="error" id="eventDateError"></span>
+
+            <!-- Conditional Field (Visible based on checkbox) -->
+            <label>
+                <input type="checkbox" id="showAddress"> Include Address
+            </label>
+            <div id="addressField" class="dynamic-field" style="display: none;">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address">
+                <span class="error" id="addressError"></span>
+            </div>
+
+            <!-- Auto-Save Simulation -->
+            <label for="autoSaveField">Auto-Save Field:</label>
+            <input type="text" id="autoSaveField" name="autoSaveField">
+
+            <!-- CAPTCHA Simulation (Just a placeholder for functionality) -->
+            <label for="captcha">CAPTCHA: 1234</label>
+            <input type="text" id="captcha" name="captcha" required>
+            <span class="error" id="captchaError"></span>
+
+            <!-- Buttons -->
+            <button type="reset">Reset Form</button>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        // Form Reset Functionality
+        document.querySelector('button[type="reset"]').addEventListener('click', function() {
+            // Clear errors
+            document.querySelectorAll('.error').forEach(span => span.textContent = '');
+            // Additional reset logic if needed
+        });
+
+        // Form Submission with Validation
+        document.getElementById('exampleForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Clear previous error messages
+            document.querySelectorAll('.error').forEach(span => span.textContent = '');
+
+            let isValid = true;
+
+            // Validate Username (Mandatory)
+            const username = document.getElementById('username').value.trim();
+            if (username.length === 0) {
+                document.getElementById('usernameError').textContent = 'Username cannot be empty.';
+                isValid = false;
+            }
+
+            // Validate Email (Format Constraint)
+            const email = document.getElementById('email').value;
+            if (!email.includes('@')) {
+                document.getElementById('emailError').textContent = 'Please enter a valid email address.';
+                isValid = false;
+            }
+
+            // Validate Password (Input Masking)
+            const password = document.getElementById('password').value;
+            if (password.length < 6) {
+                document.getElementById('passwordError').textContent = 'Password must be at least 6 characters long.';
+                isValid = false;
+            }
+
+            // Validate Age (Min and Max Values)
+            const age = parseInt(document.getElementById('age').value, 10);
+            if (isNaN(age) || age < 18 || age > 100) {
+                document.getElementById('ageError').textContent = 'Age must be between 18 and 100.';
+                isValid = false;
+            }
+
+            // Validate Event Date (Default Value)
+            const eventDate = new Date(document.getElementById('eventDate').value);
+            const minDate = new Date('2024-01-01');
+            const maxDate = new Date('2024-12-31');
+            if (eventDate < minDate || eventDate > maxDate) {
+                document.getElementById('eventDateError').textContent = 'Event date must be between 2024-01-01 and 2024-12-31.';
+                isValid = false;
+            }
+
+            // Validate Conditional Field
+            if (document.getElementById('showAddress').checked) {
+                const address = document.getElementById('address').value.trim();
+                if (address.length === 0) {
+                    document.getElementById('addressError').textContent = 'Address cannot be empty if included.';
+                    isValid = false;
+                }
+            }
+
+            // Validate CAPTCHA (Placeholder)
+            const captcha = document.getElementById('captcha').value.trim();
+            if (captcha !== '1234') {
+                document.getElementById('captchaError').textContent = 'CAPTCHA is incorrect.';
+                isValid = false;
+            }
+
+            // Submit form if valid
+            if (isValid) {
+                alert('Form submitted successfully!');
+                // Form submission logic here
+                // Example: this.submit();
+            }
+        });
+
+        // Dynamic Field Update
+        document.getElementById('showAddress').addEventListener('change', function() {
+            document.getElementById('addressField').style.display = this.checked ? 'block' : 'none';
+        });
+
+        // Auto-Save Simulation
+        let autoSaveInterval = setInterval(function() {
+            const autoSaveField = document.getElementById('autoSaveField').value;
+            localStorage.setItem('autoSaveField', autoSaveField);
+        }, 5000); // Save every 5 seconds
+
+        window.addEventListener('load', function() {
+            const savedValue = localStorage.getItem('autoSaveField');
+            if (savedValue) {
+                document.getElementById('autoSaveField').value = savedValue;
+            }
+        });
+    </script>
+</body>
+</html>

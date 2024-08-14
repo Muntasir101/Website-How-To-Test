@@ -1,0 +1,59 @@
+Validating Minimum and Maximum Values (e.g., Number Fields, Date Ranges)
+Example Scenario
+Consider a form with fields that require validation based on minimum and maximum values, such as a "Number of Participants" field and a "Event Date" range. For these fields, you need to ensure that the input values fall within the specified range and that they adhere to any other constraints.
+
+Test Scenarios
+Scenario 1: Validate number fields with values within the acceptable range
+
+Expected Result: The form should accept values that fall within the specified minimum and maximum range and should not display validation errors.
+Scenario 2: Validate number fields with values below the minimum limit
+
+Expected Result: The form should display an error message indicating that the value is too low and prevent submission.
+Scenario 3: Validate number fields with values above the maximum limit
+
+Expected Result: The form should display an error message indicating that the value is too high and prevent submission.
+Scenario 4: Validate date ranges with start dates before the minimum allowed date
+
+Expected Result: The form should display an error message indicating that the start date is too early and prevent submission.
+Scenario 5: Validate date ranges with end dates after the maximum allowed date
+
+Expected Result: The form should display an error message indicating that the end date is too late and prevent submission.
+Scenario 6: Validate that the end date is not before the start date
+
+Expected Result: The form should display an error message if the end date is earlier than the start date and prevent submission.
+Scenario 7: Validate number fields with values equal to the minimum and maximum limits
+
+Expected Result: The form should accept values that are exactly at the minimum or maximum limit without displaying validation errors.
+Scenario 8: Test date and number fields with edge cases (e.g., leap years, decimal values)
+
+Expected Result: Ensure that the form handles edge cases correctly and that validation rules are applied accurately.
+Scenario 9: Verify that minimum and maximum values are enforced across different browsers and devices
+
+Expected Result: Validation should work consistently across all supported browsers and devices.
+Scenario 10: Check for accessibility and usability of minimum and maximum value constraints
+
+Expected Result: Validation messages should be clearly accessible and understandable by all users, including those using assistive technologies.
+How to Test
+Manual Testing:
+
+Interactive Testing:
+Manually enter values into number and date fields to verify that validation occurs as expected for both valid and invalid inputs.
+Boundary Testing:
+Test edge cases where values are at or near the minimum and maximum limits to ensure correct behavior.
+Automated Testing:
+
+Using Selenium:
+Write test scripts to automate the entry of various values and verify that validation rules are applied correctly.
+Using Cypress:
+Create automated tests to check that minimum and maximum values are enforced and that appropriate error messages are displayed.
+Cross-Browser Testing:
+
+Use tools like BrowserStack or Sauce Labs to ensure consistent validation behavior across different browsers and devices.
+Accessibility Testing:
+
+Use tools like Axe or WAVE to ensure that validation messages related to minimum and maximum values are accessible and properly announced by screen readers.
+Tools to Use
+Selenium WebDriver: Automate testing of number and date fields with various values to ensure validation rules are enforced.
+Cypress: Provides a powerful API for testing value constraints and validation in forms.
+BrowserStack or Sauce Labs: Perform cross-browser and device testing to ensure consistent validation behavior.
+Axe Accessibility Tool: Validate that validation messages are accessible and properly communicated to users.

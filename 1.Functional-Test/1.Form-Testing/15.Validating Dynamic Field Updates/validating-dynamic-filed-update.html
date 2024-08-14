@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Form</title>
+    <style>
+        header {
+            background-color: #333;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        header a:hover {
+            color: #ddd;
+        }
+		
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-group textarea {
+            resize: vertical;
+        }
+        .form-group .error {
+            color: red;
+            font-size: 0.875em;
+        }
+        .form-group button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .form-group button:hover {
+            background-color: #218838;
+        }
+        .message {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .message.success {
+            color: green;
+        }
+        .message.error {
+            color: red;
+        }
+        .dynamic-field {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="../index.html">Back to Home</a>
+    </header>
+	
+
+<div class="container">
+    <h1>Job Application Form</h1>
+    <form id="jobApplicationForm">
+        <div class="form-group">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+            <div class="error" id="nameError"></div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <div class="error" id="emailError"></div>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+            <div class="error" id="phoneError"></div>
+        </div>
+        <div class="form-group">
+            <label for="position">Position Applied For:</label>
+            <select id="position" name="position" onchange="updateFields()">
+                <option value="">--Select Position--</option>
+                <option value="developer">Developer</option>
+                <option value="designer">Designer</option>
+                <option value="manager">Manager</option>
+            </select>
+        </div>
+        <div id="developerFields" class="dynamic-field">
+            <div class="form-group">
+                <label for="skills">Programming Skills:</label>
+                <textarea id="skills" name="skills" rows="4"></textarea>
+                <div class="error" id="skillsError"></div>
+            </div>
+        </div>
+        <div id="designerFields" class="dynamic-field">
+            <div class="form-group">
+                <label for="portfolio">Portfolio URL:</label>
+                <input type="url" id="portfolio" name="portfolio">
+                <div class="error" id="portfolioError"></div>
+            </div>
+        </div>
+        <div id="managerFields" class="dynamic-field">
+            <div class="form-group">
+                <label for="experience">Years of Experience:</label>
+                <input type="number" id="experience" name="experience" min="0">
+                <div class="error" id="experienceError"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="button" onclick="submitForm()">Submit</button>
+        </div>
+    </form>
+    <div id="formMessage" class="message"></div>
+</div>
+
+<script>
+    function updateFields() {
+        const selectedPosition = document.getElementById('position').value;
+        const developerFields = document.getElementById('developerFields');
+        const designerFields = document.getElementById('designerFields');
+        const managerFields = document.getElementById('managerFields');
+
+        // Hide all dynamic fields
+        developerFields.style.display = 'none';
+        designerFields.style.display = 'none';
+        managerFields.style.display = 'none';
+
+        // Show fields based on selected position
+        if (selectedPosition === 'developer') {
+            developerFields.style.display = 'block';
+        } else if (selectedPosition === 'designer') {
+            designerFields.style.display = 'block';
+        } else if (selectedPosition === 'manager') {
+            managerFields.style.display = 'block';
+        }
+    }
+
+    function submitForm() {
+        // Clear previous error messages
+        const errorElements = document.querySelectorAll('.error');
+        errorElements.forEach(element => element.textContent = '');
+        const message = document.getElementById('formMessage');
+        message.textContent = '';
+
+        let isValid = true;
+
+        // Get form values
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const position = document.getElementById('position').value;
+        const skills = document.getElementById('skills')?.value.trim() || '';
+        const portfolio = document.getElementById('portfolio')?.value.trim() || '';
+        const experience = document.getElementById('experience')?.value.trim() || '';
+
+        // Validation
+        if (!name) {
+            document.getElementById('nameError').textContent = 'Full name is required.';
+            isValid = false;
+        }
+
+        if (!email) {
+            document.getElementById('emailError').textContent = 'Email is required.';
+            isValid = false;
+        }
+
+        if (!phone) {
+            document.getElementById('phoneError').textContent = 'Phone number is required.';
+            isValid = false;
+        }
+
+        if (position === 'developer' && !skills) {
+            document.getElementById('skillsError').textContent = 'Programming skills are required for developers.';
+            isValid = false;
+        }
+
+        if (position === 'designer' && !portfolio) {
+            document.getElementById('portfolioError').textContent = 'Portfolio URL is required for designers.';
+            isValid = false;
+        }
+
+        if (position === 'manager' && !experience) {
+            document.getElementById('experienceError').textContent = 'Years of experience are required for managers.';
+            isValid = false;
+        }
+
+        if (isValid) {
+            message.textContent = 'Form submitted successfully!';
+            message.className = 'message success';
+            // Here you would normally handle form submission, e.g., send data to server
+        } else {
+            message.textContent = 'Please correct the errors in the form.';
+            message.className = 'message error';
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form with Conditional Fields Validation</title>
+    <style>
+        header {
+            background-color: #333;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        header a:hover {
+            color: #ddd;
+        }
+		
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            line-height: 1.6;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-top: 50px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin: 10px 0 5px;
+        }
+        input[type="text"], input[type="email"], input[type="checkbox"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .conditional-field {
+            display: none;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #333;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="../index.html">Back to Home</a>
+    </header>
+	
+    <div class="container">
+        <h1>Registration Form</h1>
+        <form id="conditionalForm">
+            <label for="newsletter">Subscribe to Newsletter?</label>
+            <input type="checkbox" id="newsletter" name="newsletter">
+
+            <div id="newsletterPreferences" class="conditional-field">
+                <label for="frequency">Newsletter Frequency</label>
+                <select id="frequency" name="frequency">
+                    <option value="">Select Frequency</option>
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                </select>
+
+                <label for="topics">Topics of Interest</label>
+                <input type="text" id="topics" name="topics">
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('newsletter').addEventListener('change', function() {
+            const conditionalFields = document.getElementById('newsletterPreferences');
+            if (this.checked) {
+                conditionalFields.style.display = 'block';
+            } else {
+                conditionalFields.style.display = 'none';
+            }
+        });
+
+        document.getElementById('conditionalForm').addEventListener('submit', function(event) {
+            // Prevent form submission
+            event.preventDefault();
+
+            // Clear previous error messages
+            // (Add error clearing logic if needed)
+
+            let isValid = true;
+
+            // Validate conditional fields if visible
+            const frequency = document.getElementById('frequency').value;
+            const topics = document.getElementById('topics').value.trim();
+
+            if (document.getElementById('newsletter').checked) {
+                if (!frequency) {
+                    alert('Please select a newsletter frequency.');
+                    isValid = false;
+                }
+                if (!topics) {
+                    alert('Please enter your topics of interest.');
+                    isValid = false;
+                }
+            }
+
+            // If all validations pass, submit the form
+            if (isValid) {
+                alert('Form submitted successfully!');
+                this.submit();
+            }
+        });
+    </script>
+</body>
+</html>

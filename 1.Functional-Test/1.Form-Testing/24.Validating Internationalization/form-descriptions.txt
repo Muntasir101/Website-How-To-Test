@@ -1,0 +1,18 @@
+Description
+Country Patterns:
+
+A JavaScript object countryPatterns maps country codes to their phone number validation patterns. Each pattern is a regular expression that matches the format of phone numbers for a specific country.
+Examples provided:
+US: +1 followed by 10 digits.
+UK: +44 followed by 10 digits.
+Japan: +81 followed by 10 digits.
+Bangladesh: +880 followed by 10 digits.
+Validation Logic:
+
+The form collects the country code and phone number, then concatenates them to form a complete phone number.
+The concatenated phone number is validated against the pattern specific to the selected country.
+If the validation fails, an appropriate error message is displayed.
+How It Works:
+
+Form Submission: On form submission, the script checks if the country code and phone number match the pattern for the selected country.
+Error Handling: Displays errors if the country code or phone number is invalid.

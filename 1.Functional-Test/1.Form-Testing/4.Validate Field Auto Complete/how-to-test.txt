@@ -1,0 +1,56 @@
+Validating Field Auto-Completion (if applicable)
+Example Scenario
+Imagine a registration form where fields like "Name," "Address," and "Email Address" might be auto-filled by the browser based on previously saved data. Auto-completion should correctly populate fields with relevant data, and validation should ensure that the auto-filled data meets the required format and content constraints.
+
+Test Scenarios
+Scenario 1: Browser auto-fills all fields with correct data
+
+Expected Result: The form should allow submission without errors since all fields are correctly populated.
+Scenario 2: Browser auto-fills fields with incorrect data formats (e.g., email without a domain, incorrect phone number format)
+
+Expected Result: The form should trigger validation errors for fields with incorrect data, preventing submission.
+Scenario 3: Auto-completion partially fills in data (e.g., only first name and email are auto-filled)
+
+Expected Result: The form should identify the unfilled mandatory fields and prevent submission until they are completed.
+Scenario 4: Auto-completion populates fields that are irrelevant or not intended (e.g., auto-filling a "Phone Number" field with a ZIP code)
+
+Expected Result: The form should trigger validation errors for improperly filled fields, requiring correction before submission.
+Scenario 5: Test the form with different browsers and devices to ensure consistent auto-fill behavior
+
+Expected Result: The form should consistently validate auto-filled data across all tested browsers and devices.
+Scenario 6: Manually modify auto-filled data to ensure the form can still validate it properly
+
+Expected Result: The form should still validate manually edited auto-filled data according to its rules.
+Scenario 7: Test how the form behaves when auto-fill is disabled in the browser
+
+Expected Result: The form should function normally, with no validation issues related to the absence of auto-fill data.
+Scenario 8: Check how the form handles auto-fill for fields with specific format requirements (e.g., phone number format)
+
+Expected Result: The form should validate that auto-filled data meets the required format and display errors if the format is incorrect.
+How to Test
+Manual Testing:
+
+Enable auto-fill in your browser settings and use it to populate the form.
+Submit the form and observe how it handles auto-filled data.
+Test the form by disabling auto-fill and manually entering data.
+Automated Testing:
+
+Using Selenium:
+Simulate auto-fill by pre-filling fields and triggering form validation.
+Using Cypress:
+Create tests that automatically fill in fields and verify that validation behaves as expected.
+Cross-Browser Testing:
+
+Use tools like BrowserStack or Sauce Labs to test auto-fill behavior and validation consistency across different browsers and devices.
+Edge Cases:
+
+Test cases where auto-fill data is incomplete or incorrectly formatted.
+Ensure the form handles these scenarios gracefully with appropriate validation messages.
+Accessibility Testing:
+
+Use tools like Axe to ensure error messages for auto-filled fields are accessible and correctly announced by screen readers.
+Tools to Use
+Selenium WebDriver: Automate the testing of auto-fill and validation scenarios across different browsers.
+Cypress: Provides a straightforward API for testing auto-fill interactions and validations.
+BrowserStack or Sauce Labs: Perform cross-browser and device testing to ensure consistent behavior.
+Axe Accessibility Tool: Validate that error messages are accessible for auto-filled fields.

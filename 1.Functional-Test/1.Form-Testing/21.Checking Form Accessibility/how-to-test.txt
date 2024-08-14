@@ -1,0 +1,80 @@
+Checking Form Accessibility involves ensuring that the form is usable by all users, including those with disabilities. This includes verifying screen reader compatibility, proper use of ARIA (Accessible Rich Internet Applications) labels, and overall adherence to accessibility standards.
+
+1. Test Scenarios
+Scenario 1: Screen Reader Compatibility
+
+Objective: Ensure that the form is readable and navigable using screen readers.
+Steps:
+Use a screen reader (e.g., NVDA, JAWS, VoiceOver) to navigate through the form.
+Verify that each form field, label, and instruction is read out correctly.
+Ensure that users can navigate through form fields and receive appropriate feedback.
+Scenario 2: ARIA Labels and Roles
+
+Objective: Verify that ARIA labels and roles are used correctly to enhance accessibility.
+Steps:
+Inspect the HTML to ensure that ARIA attributes (e.g., aria-label, aria-required, role) are used appropriately.
+Confirm that ARIA labels are descriptive and correctly associated with form elements.
+Check that ARIA roles provide meaningful information to assistive technologies.
+Scenario 3: Keyboard Navigation
+
+Objective: Ensure that users can navigate through the form using only a keyboard.
+Steps:
+Use the Tab key to navigate through all form fields and controls.
+Verify that the focus indicator is visible and that the user can interact with all elements.
+Ensure that users can submit the form using the Enter key.
+Scenario 4: Color Contrast and Visual Indicators
+
+Objective: Check that form fields and messages have sufficient color contrast and visual indicators for users with low vision or color blindness.
+Steps:
+Use color contrast tools (e.g., WebAIM Contrast Checker) to check that text and background colors meet contrast requirements.
+Verify that error messages and form field labels have adequate visibility.
+Scenario 5: Error Messages and Validation
+
+Objective: Ensure that error messages and validation feedback are accessible and clear.
+Steps:
+Trigger validation errors and verify that error messages are read by screen readers.
+Ensure that error messages are displayed in a way that users can easily understand and correct issues.
+Scenario 6: Focus Management
+
+Objective: Ensure that focus management is handled correctly, especially when navigating between steps or sections.
+Steps:
+Verify that focus moves logically between form fields and steps.
+Check that focus is set to the first field or error message when navigating to a new step or section.
+2. How to Test
+Manual Testing:
+
+Prepare the Form:
+
+Load the form in a web browser.
+Test Screen Reader Compatibility:
+
+Use a screen reader to navigate the form.
+Verify that form fields, labels, and instructions are read out correctly.
+Inspect ARIA Labels and Roles:
+
+Check the HTML code for ARIA attributes and roles.
+Verify that they are used appropriately and enhance accessibility.
+Test Keyboard Navigation:
+
+Use the Tab key to navigate through the form.
+Ensure that all interactive elements are focusable and accessible.
+Test form submission using the Enter key.
+Check Color Contrast and Visual Indicators:
+
+Use contrast checking tools to verify adequate color contrast.
+Ensure that visual indicators are clear and accessible.
+Validate Error Messages and Validation Feedback:
+
+Trigger validation errors and check that error messages are accessible.
+Verify that error messages provide clear guidance.
+Check Focus Management:
+
+Navigate between steps or sections and ensure that focus management is logical.
+Automated Testing:
+
+Accessibility Testing Tools (e.g., Axe, Lighthouse):
+
+Run accessibility audits to identify issues with ARIA attributes, keyboard navigation, and color contrast.
+Screen Reader Emulators (e.g., NVDA, VoiceOver):
+
+Use emulators to test how the form is read by screen readers.
