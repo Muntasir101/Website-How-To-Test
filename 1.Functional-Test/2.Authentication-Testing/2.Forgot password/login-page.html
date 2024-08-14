@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #333;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        .forgot-password {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .forgot-password a {
+            color: #333;
+            text-decoration: none;
+        }
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+        
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Login</h1>
+    <form id="loginForm">
+        <!-- Username (Mandatory) -->
+        <label for="username">Username <span class="error" id="usernameError"></span></label>
+        <input type="text" id="username" name="username" required>
+
+        <!-- Password (Mandatory) -->
+        <label for="password">Password <span class="error" id="passwordError"></span></label>
+        <input type="password" id="password" name="password" required>
+
+        <!-- Login Button -->
+        <button type="submit">Login</button>
+
+        <!-- Forgot Password Link -->
+        <div class="forgot-password">
+            <a href="./forgot-password.html">Forgot Password?</a>
+        </div>
+    </form>
+</div>
+
+<script>
+    // Predefined username and password
+    const predefinedUsername = 'admin';
+    const predefinedPassword = '123456';
+
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        // Prevent form submission
+        event.preventDefault();
+
+        // Clear previous error messages
+        document.getElementById('usernameError').textContent = '';
+        document.getElementById('passwordError').textContent = '';
+
+        let isValid = true;
+
+        // Validate Username
+        const username = document.getElementById('username').value.trim();
+        if (!username) {
+            document.getElementById('usernameError').textContent = 'Username is required.';
+            isValid = false;
+        } else if (username !== predefinedUsername) {
+            document.getElementById('usernameError').textContent = 'Invalid username.';
+            isValid = false;
+        }
+
+        // Validate Password
+        const password = document.getElementById('password').value.trim();
+        if (!password) {
+            document.getElementById('passwordError').textContent = 'Password is required.';
+            isValid = false;
+        } else if (password !== predefinedPassword) {
+            document.getElementById('passwordError').textContent = 'Invalid password.';
+            isValid = false;
+        }
+
+        // If all validations pass, proceed
+        if (isValid) {
+            alert('Login successful!');
+            window.location.href = 'dashboard.html'; // Redirect to dashboard
+        }
+    });
+</script>
+
+</body>
+</html>

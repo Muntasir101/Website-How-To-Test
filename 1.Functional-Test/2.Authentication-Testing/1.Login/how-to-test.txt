@@ -1,0 +1,71 @@
+Test Scenarios for Login
+Test Scenario: Valid Login Credentials
+
+Steps:
+Open the login page.
+Enter the username admin in the Username field.
+Enter the password 123456 in the Password field.
+Click the Login button.
+Expected Result: The user should be redirected to the dashboard page with a welcome message.
+Test Scenario: Invalid Username
+
+Steps:
+Open the login page.
+Enter a username other than admin (e.g., user) in the Username field.
+Enter the correct password 123456 in the Password field.
+Click the Login button.
+Expected Result: An error message should be displayed indicating "Invalid username."
+Test Scenario: Invalid Password
+
+Steps:
+Open the login page.
+Enter the correct username admin in the Username field.
+Enter an incorrect password (e.g., wrongpassword) in the Password field.
+Click the Login button.
+Expected Result: An error message should be displayed indicating "Invalid password."
+Test Scenario: Missing Username
+
+Steps:
+Open the login page.
+Leave the Username field empty.
+Enter the correct password 123456 in the Password field.
+Click the Login button.
+Expected Result: An error message should be displayed indicating "Username is required."
+Test Scenario: Missing Password
+
+Steps:
+Open the login page.
+Enter the correct username admin in the Username field.
+Leave the Password field empty.
+Click the Login button.
+Expected Result: An error message should be displayed indicating "Password is required."
+Test Scenarios for Logout
+Test Scenario: Successful Logout
+
+Steps:
+Log in with valid credentials (e.g., admin/123456).
+Once on the dashboard page, click the Logout button.
+Expected Result: The user should be redirected back to the login page.
+Test Scenario: Logout Redirection
+
+Steps:
+Log in with valid credentials.
+Click the Logout button.
+Verify the URL.
+Expected Result: The URL should redirect to the login page (e.g., /login.html).
+Additional Test Scenarios for Both Login and Logout
+Test Scenario: Accessing Dashboard Without Login
+
+Steps:
+Directly navigate to the dashboard URL (e.g., /dashboard.html) without logging in.
+Expected Result: The user should be redirected to the login page or an error message should be displayed.
+Test Scenario: Browser Cache Behavior
+
+Steps:
+Log in successfully and navigate to the dashboard page.
+Close and reopen the browser.
+Directly navigate to the dashboard page.
+Expected Result: The user should be required to log in again if session management is correctly implemented.
+Notes for Testing:
+Clear Cache: Ensure that you clear your browser cache and cookies between tests to avoid cached data affecting the results.
+Check Console: Monitor the browser console for any JavaScript errors or warnings that may affect functionality.

@@ -1,0 +1,23 @@
+How to Test
+Test "Forgot Password" Link
+
+Steps: Click the "Forgot Password?" link on the login page.
+Expected Result: You should be redirected to the "Forgot Password" page.
+Test Forgot Password Form Submission
+
+Steps:
+On the "Forgot Password" page, enter a valid email address.
+Click the Submit button.
+Expected Result: An alert should appear saying "Password reset instructions have been sent to your email," and you should be redirected back to the login page.
+Test Invalid Email Submission
+
+Steps:
+On the "Forgot Password" page, enter an invalid email address.
+Click the Submit button.
+Expected Result: An error message should be displayed indicating "Please enter a valid email address."
+Test Empty Email Submission
+
+Steps:
+On the "Forgot Password" page, leave the email field empty.
+Click the Submit button.
+Expected Result: An error message should be displayed indicating "Email Address is required."
