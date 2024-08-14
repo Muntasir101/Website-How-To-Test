@@ -79,10 +79,10 @@
             background-color: #555;
         }
         .reset-btn {
-            background-color: #0349558a;
+            background-color: #999;
         }
         .reset-btn:hover {
-            background-color: #bbb;
+            background-color: #0349558a;
         }
     </style>
 </head>
@@ -108,11 +108,11 @@
         <input type="password" id="password" name="password" required minlength="8">
 
         <!-- Phone Number (Optional) -->
-        <label for="phone">Phone Number <span class="optional"></span></label>
+        <label for="phone">Phone Number <span class="optional">(Optional)</span> <span class="error" id="phoneError"></span></label>
         <input type="text" id="phone" name="phone">
 
         <!-- Address (Optional) -->
-        <label for="address">Address <span class="optional"></span></label>
+        <label for="address">Address <span class="optional">(Optional)</span></label>
         <textarea id="address" name="address" rows="3"></textarea>
 
         <div class="buttons">
@@ -134,6 +134,7 @@
         document.getElementById('usernameError').textContent = '';
         document.getElementById('emailError').textContent = '';
         document.getElementById('passwordError').textContent = '';
+        document.getElementById('phoneError').textContent = '';
 
         let isValid = true;
 
@@ -141,6 +142,9 @@
         const username = document.getElementById('username').value.trim();
         if (!username) {
             document.getElementById('usernameError').textContent = 'Username is required.';
+            isValid = false;
+        } else if (username.length < 6) {
+            document.getElementById('usernameError').textContent = 'Username must be at least 6 characters long.';
             isValid = false;
         }
 
@@ -159,8 +163,15 @@
         if (!password) {
             document.getElementById('passwordError').textContent = 'Password is required.';
             isValid = false;
-        } else if (password.length < 8) {
-            document.getElementById('passwordError').textContent = 'Password must be at least 8 characters long.';
+        } else if (password.length < 8 || !/\d/.test(password) || !/[a-zA-Z]/.test(password)) {
+            document.getElementById('passwordError').textContent = 'Password must be at least 8 characters long and include a mix of letters and numbers.';
+            isValid = false;
+        }
+
+        // Validate Phone Number (Optional)
+        const phone = document.getElementById('phone').value.trim();
+        if (phone && !validatePhoneNumber(phone)) {
+            document.getElementById('phoneError').textContent = 'Please enter a valid phone number.';
             isValid = false;
         }
 
@@ -174,6 +185,11 @@
     function validateEmail(email) {
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(String(email).toLowerCase());
+    }
+
+    function validatePhoneNumber(phone) {
+        const re = /^\d{10}$/; // Validates a 10-digit phone number
+        return re.test(String(phone));
     }
 </script>
 

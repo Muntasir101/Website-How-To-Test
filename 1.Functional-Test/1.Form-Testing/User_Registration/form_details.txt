@@ -1,0 +1,26 @@
+Explanation:
+Mandatory Fields:
+
+Username: <input type="text" id="username" name="username" required>
+Email: <input type="email" id="email" name="email" required>
+Password: <input type="password" id="password" name="password" required minlength="8">
+Optional Fields:
+
+Phone Number: <input type="text" id="phone" name="phone">
+Address: <textarea id="address" name="address" rows="3"></textarea>
+Form Validation:
+
+JavaScript validation is added for mandatory fields (Username, Email, and Password).
+The form will not submit until all mandatory fields are validated.
+
+Reset Button:
+
+Added a "Reset" button that allows users to clear all the form data.
+The button has a class of .reset-btn for separate styling.
+Button Styles:
+
+Styled both the "Register" and "Reset" buttons for a consistent appearance.
+The "Reset" button has a different background color to differentiate it from the "Register" button.
+Button Alignment:
+
+The buttons are placed side by side using flexbox with equal width (48%) for a balanced layout.

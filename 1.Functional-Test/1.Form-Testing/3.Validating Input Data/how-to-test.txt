@@ -1,0 +1,16 @@
+Validations:
+Username Validation:
+
+Error if the username is missing or less than 6 characters: "Username must be at least 6 characters long."
+Email Validation:
+
+Error if the email is missing or invalid: "Please enter a valid email address."
+Password Validation:
+
+Error if the password is missing, less than 8 characters, or doesn't include a mix of letters and numbers: "Password must be at least 8 characters long and include a mix of letters and numbers."
+Phone Number Validation:
+
+Error if the phone number is provided but invalid (expects 10 digits): "Please enter a valid phone number."
+Behavior:
+The form won't submit until all mandatory fields pass the validation.
+Optional fields like the phone number are validated only if they are filled out.

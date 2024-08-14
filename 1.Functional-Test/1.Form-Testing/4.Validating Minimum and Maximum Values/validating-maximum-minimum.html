@@ -97,23 +97,23 @@
     <form id="registrationForm">
         <!-- Username (Mandatory) -->
         <label for="username">Username <span class="error" id="usernameError"></span></label>
-        <input type="text" id="username" name="username" required>
+        <input type="text" id="username" name="username" required maxlength="50">
 
         <!-- Email (Mandatory) -->
         <label for="email">Email Address <span class="error" id="emailError"></span></label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" name="email" required maxlength="255">
 
         <!-- Password (Mandatory) -->
         <label for="password">Password <span class="error" id="passwordError"></span></label>
-        <input type="password" id="password" name="password" required minlength="8">
+        <input type="password" id="password" name="password" required minlength="8" maxlength="128">
 
         <!-- Phone Number (Optional) -->
-        <label for="phone">Phone Number <span class="optional"></span></label>
-        <input type="text" id="phone" name="phone">
+        <label for="phone">Phone Number <span class="optional">(Optional)</span> <span class="error" id="phoneError"></span></label>
+        <input type="text" id="phone" name="phone" maxlength="15">
 
         <!-- Address (Optional) -->
-        <label for="address">Address <span class="optional"></span></label>
-        <textarea id="address" name="address" rows="3"></textarea>
+        <label for="address">Address <span class="optional">(Optional)</span></label>
+        <textarea id="address" name="address" rows="3" maxlength="300"></textarea>
 
         <div class="buttons">
             <!-- Register Button -->
@@ -134,6 +134,7 @@
         document.getElementById('usernameError').textContent = '';
         document.getElementById('emailError').textContent = '';
         document.getElementById('passwordError').textContent = '';
+        document.getElementById('phoneError').textContent = '';
 
         let isValid = true;
 
@@ -141,6 +142,9 @@
         const username = document.getElementById('username').value.trim();
         if (!username) {
             document.getElementById('usernameError').textContent = 'Username is required.';
+            isValid = false;
+        } else if (username.length < 6 || username.length > 50) {
+            document.getElementById('usernameError').textContent = 'Username must be between 6 and 50 characters long.';
             isValid = false;
         }
 
@@ -152,6 +156,9 @@
         } else if (!validateEmail(email)) {
             document.getElementById('emailError').textContent = 'Please enter a valid email address.';
             isValid = false;
+        } else if (email.length > 255) {
+            document.getElementById('emailError').textContent = 'Email Address must not exceed 255 characters.';
+            isValid = false;
         }
 
         // Validate Password
@@ -159,8 +166,15 @@
         if (!password) {
             document.getElementById('passwordError').textContent = 'Password is required.';
             isValid = false;
-        } else if (password.length < 8) {
-            document.getElementById('passwordError').textContent = 'Password must be at least 8 characters long.';
+        } else if (password.length < 8 || password.length > 128 || !/^(?=.*[a-zA-Z])(?=.*\d).+$/.test(password)) {
+            document.getElementById('passwordError').textContent = 'Password must be between 8 and 128 characters long and include a mix of letters and numbers.';
+            isValid = false;
+        }
+
+        // Validate Phone Number (Optional)
+        const phone = document.getElementById('phone').value.trim();
+        if (phone && phone.length > 15) {
+            document.getElementById('phoneError').textContent = 'Phone Number must not exceed 15 characters.';
             isValid = false;
         }
 

@@ -1,3 +1,9 @@
+- Username: Enter a value exceeding the maximum length ( limit of 50 characters)
+- Email: Enter a value exceeding the maximum length ( limit of 255 characters)
+- Password: Enter a value exceeding the maximum length ( limit of 128 characters)
+- Phone Number: Enter a value exceeding the maximum length ( limit of 15 characters)
+- Address: Enter a value exceeding the maximum length (f 300 characters)
+
 Validating Minimum and Maximum Values (e.g., Number Fields, Date Ranges)
 Example Scenario
 Consider a form with fields that require validation based on minimum and maximum values, such as a "Number of Participants" field and a "Event Date" range. For these fields, you need to ensure that the input values fall within the specified range and that they adhere to any other constraints.
