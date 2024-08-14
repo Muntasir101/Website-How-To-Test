@@ -1,0 +1,96 @@
+Test Scenarios for File Upload Functionality
+
+1. Validate File Type
+
+Scenario 1.1: Upload Unsupported File Type
+
+Steps:
+
+Select a file with an unsupported extension (e.g., .txt).
+Complete other form fields with valid data.
+Click the "Register" button.
+
+Expected Result:
+
+An error message should appear next to the file upload input: "Invalid file type. Only DOC, PDF, XLS, XLSX, CSV, JPG, and PNG files are allowed."
+The form should not submit.
+
+Scenario 1.2: Upload Supported File Type
+
+Steps:
+
+Select a file with a supported extension (e.g., .pdf).
+Complete other form fields with valid data.
+Click the "Register" button.
+
+Expected Result:
+
+The form should submit successfully if no other validation errors are present.
+
+2. Validate File Size
+Scenario 2.1: Upload File Larger than 10 MB
+
+Steps:
+
+Select a file larger than 10 MB (e.g., a large .jpg image).
+Complete other form fields with valid data.
+Click the "Register" button.
+
+Expected Result:
+
+An error message should appear next to the file upload input: "File size must not exceed 10 MB."
+The form should not submit.
+
+Scenario 2.2: Upload File Smaller than 10 MB
+
+Steps:
+
+Select a file smaller than 10 MB (e.g., a .jpg image under 5 MB).
+Complete other form fields with valid data.
+Click the "Register" button.
+
+Expected Result:
+
+The form should submit successfully if no other validation errors are present.
+
+3. Validate Multiple Files (if applicable)
+Scenario 3.1: Upload Multiple Files
+
+Steps:
+
+Select multiple files (if your implementation allows multiple uploads).
+Ensure some files are of supported types and sizes, and others are not.
+Complete other form fields with valid data.
+Click the "Register" button.
+
+Expected Result:
+
+The form should validate each file. If any file is invalid (unsupported type or size), an error message should appear for that specific file.
+The form should not submit if any file fails validation.
+
+4. Validate File Removal
+Scenario 4.1: Remove Uploaded File
+
+Steps:
+
+Upload a valid file.
+Remove the file (if the form allows).
+Complete other form fields with valid data.
+Click the "Register" button.
+
+Expected Result:
+
+The form should handle the absence of a file gracefully, allowing submission if no file is required.
+
+5. Validate No File Uploaded
+Scenario 5.1: No File Uploaded
+
+Steps:
+
+Do not upload any file.
+Complete other form fields with valid data.
+Click the "Register" button.
+
+Expected Result:
+
+The form should submit successfully if the file upload is optional and no file is required.

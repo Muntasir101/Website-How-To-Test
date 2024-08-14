@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multi-Step Form Example</title>
+    <title>Multi-Step Registration Form</title>
     <style>
         header {
             background-color: #333;
@@ -21,17 +21,66 @@
         }
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+            line-height: 1.6;
         }
         .container {
-            max-width: 600px;
+            width: 50%;
             margin: auto;
-            background: #fff;
             padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group input, .form-group textarea {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
             border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .form-group .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .form-group .optional {
+            color: #666;
+            font-size: 14px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #333;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 48%;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        .reset-btn {
+            background-color: #0349558a;
+        }
+        .reset-btn:hover {
+            background-color: #bbb;
         }
         .step {
             display: none;
@@ -39,175 +88,183 @@
         .step.active {
             display: block;
         }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        .form-group button {
-            background-color: #28a745;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1em;
-        }
-        .form-group button:hover {
-            background-color: #218838;
-        }
-        .form-navigation {
-            margin-top: 20px;
-            text-align: center;
-        }
-        .form-navigation button {
-            margin: 0 5px;
-        }
-        .error-message {
-            font-size: 0.9em;
-            color: red;
-            margin-top: 5px;
-        }
     </style>
 </head>
 <body>
-    <header>
-        <a href="/index.html">Back to Home</a>
-    </header>
-	
+
+<header>
+    <a href="/index.html">Back to Home</a>
+</header>
 
 <div class="container">
-    <h1>Multi-Step Form Example</h1>
-    <form id="multiStepForm">
-        <!-- Step 1 -->
+    <h1>Multi-Step Registration Form</h1>
+    <form id="registrationForm">
+        <!-- Step 1: Personal Information -->
         <div class="step active" id="step1">
-            <h2>Step 1: Personal Information</h2>
             <div class="form-group">
-                <label for="name">Full Name:</label>
-                <input type="text" id="name" name="name">
-                <div class="error-message" id="errorName"></div>
+                <input type="text" id="username" name="username" placeholder="Username" required maxlength="50">
+                <span class="error" id="usernameError"></span>
             </div>
             <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email">
-                <div class="error-message" id="errorEmail"></div>
+                <input type="email" id="email" name="email" placeholder="Email Address" required maxlength="255">
+                <span class="error" id="emailError"></span>
             </div>
-            <div class="form-navigation">
-                <button type="button" onclick="nextStep()">Next</button>
+            <div class="buttons">
+                <button type="button" onclick="nextStep(2)">Next</button>
             </div>
         </div>
 
-        <!-- Step 2 -->
+        <!-- Step 2: Password and Optional Fields -->
         <div class="step" id="step2">
-            <h2>Step 2: Address Information</h2>
             <div class="form-group">
-                <label for="address">Address:</label>
-                <input type="text" id="address" name="address">
-                <div class="error-message" id="errorAddress"></div>
+                <input type="password" id="password" name="password" placeholder="Password" required minlength="8" maxlength="128">
+                <span class="error" id="passwordError"></span>
             </div>
             <div class="form-group">
-                <label for="city">City:</label>
-                <input type="text" id="city" name="city">
-                <div class="error-message" id="errorCity"></div>
+                <input type="text" id="phone" name="phone" placeholder="Phone Number">
+                <span class="optional">(Optional)</span>
+                <span class="error" id="phoneError"></span>
             </div>
-            <div class="form-navigation">
-                <button type="button" onclick="prevStep()">Previous</button>
-                <button type="button" onclick="nextStep()">Next</button>
+            <div class="form-group">
+                <textarea id="address" name="address" rows="3" placeholder="Address"></textarea>
+                <span class="optional">(Optional)</span>
+            </div>
+            <div class="buttons">
+                <button type="button" onclick="nextStep(1)">Back</button>
+                <button type="button" onclick="nextStep(3)">Next</button>
             </div>
         </div>
 
-        <!-- Step 3 -->
+        <!-- Step 3: Review and Submit -->
         <div class="step" id="step3">
-            <h2>Step 3: Review and Submit</h2>
-            <p>Please review your information before submitting.</p>
             <div class="form-group">
-                <label for="comments">Comments:</label>
-                <textarea id="comments" name="comments" rows="4"></textarea>
+                <p>Please review your information before submitting.</p>
             </div>
-            <div class="form-navigation">
-                <button type="button" onclick="prevStep()">Previous</button>
-                <button type="button" onclick="submitForm()">Submit</button>
+            <div class="buttons">
+                <button type="button" onclick="nextStep(2)">Back</button>
+                <button type="submit">Submit</button>
             </div>
+            <div id="formMessage" class="error"></div>
         </div>
-
-        <div id="formMessage" class="error-message"></div>
     </form>
 </div>
 
 <script>
-    let currentStep = 1;
-
-    function showStep(step) {
-        document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
-        document.getElementById('step' + step).classList.add('active');
-    }
-
-    function nextStep() {
-        if (validateCurrentStep()) {
-            currentStep++;
-            if (currentStep > 3) currentStep = 3;
-            showStep(currentStep);
-        }
-    }
-
-    function prevStep() {
-        currentStep--;
-        if (currentStep < 1) currentStep = 1;
-        showStep(currentStep);
-    }
-
-    function validateCurrentStep() {
-        let valid = true;
-        if (currentStep === 1) {
-            const name = document.getElementById('name').value.trim();
+    function validateStep(step) {
+        let isValid = true;
+        if (step === 1) {
+            // Validate Step 1
+            const username = document.getElementById('username').value.trim();
             const email = document.getElementById('email').value.trim();
-            if (!name) {
-                document.getElementById('errorName').textContent = 'Full Name is required.';
-                valid = false;
-            } else {
-                document.getElementById('errorName').textContent = '';
+            if (!username) {
+                document.getElementById('usernameError').textContent = 'Username is required.';
+                isValid = false;
+            } else if (username.length < 6 || username.length > 50) {
+                document.getElementById('usernameError').textContent = 'Username must be between 6 and 50 characters long.';
+                isValid = false;
             }
             if (!email) {
-                document.getElementById('errorEmail').textContent = 'Email is required.';
-                valid = false;
-            } else {
-                document.getElementById('errorEmail').textContent = '';
+                document.getElementById('emailError').textContent = 'Email Address is required.';
+                isValid = false;
+            } else if (!validateEmail(email)) {
+                document.getElementById('emailError').textContent = 'Please enter a valid email address.';
+                isValid = false;
+            } else if (email.length > 255) {
+                document.getElementById('emailError').textContent = 'Email Address must not exceed 255 characters.';
+                isValid = false;
+            }
+        } else if (step === 2) {
+            // Validate Step 2
+            const password = document.getElementById('password').value.trim();
+            if (!password) {
+                document.getElementById('passwordError').textContent = 'Password is required.';
+                isValid = false;
+            } else if (password.length < 8 || password.length > 128 || !/^(?=.*[a-zA-Z])(?=.*\d).+$/.test(password)) {
+                document.getElementById('passwordError').textContent = 'Password must be between 8 and 128 characters long and include a mix of letters and numbers.';
+                isValid = false;
+            }
+            const phone = document.getElementById('phone').value.trim();
+            if (phone && phone.length > 15) {
+                document.getElementById('phoneError').textContent = 'Phone Number must not exceed 15 characters.';
+                isValid = false;
             }
         }
-        if (currentStep === 2) {
-            const address = document.getElementById('address').value.trim();
-            const city = document.getElementById('city').value.trim();
-            if (!address) {
-                document.getElementById('errorAddress').textContent = 'Address is required.';
-                valid = false;
-            } else {
-                document.getElementById('errorAddress').textContent = '';
-            }
-            if (!city) {
-                document.getElementById('errorCity').textContent = 'City is required.';
-                valid = false;
-            } else {
-                document.getElementById('errorCity').textContent = '';
-            }
-        }
-        return valid;
+        return isValid;
     }
 
-    function submitForm() {
-        if (validateCurrentStep()) {
-            document.getElementById('formMessage').textContent = 'Form submitted successfully!';
-            document.getElementById('formMessage').className = 'success';
+    function nextStep(step) {
+        // Validate current step
+        if (validateStep(currentStep)) {
+            const steps = document.querySelectorAll('.step');
+            steps.forEach(s => s.classList.remove('active'));
+            document.getElementById(`step${step}`).classList.add('active');
+            currentStep = step;
         }
+    }
+
+    let currentStep = 1;
+
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Clear previous error messages
+        document.getElementById('usernameError').textContent = '';
+        document.getElementById('emailError').textContent = '';
+        document.getElementById('passwordError').textContent = '';
+        document.getElementById('phoneError').textContent = '';
+
+        let isValid = true;
+
+        // Validate Username
+        const username = document.getElementById('username').value.trim();
+        if (!username) {
+            document.getElementById('usernameError').textContent = 'Username is required.';
+            isValid = false;
+        } else if (username.length < 6 || username.length > 50) {
+            document.getElementById('usernameError').textContent = 'Username must be between 6 and 50 characters long.';
+            isValid = false;
+        }
+
+        // Validate Email
+        const email = document.getElementById('email').value.trim();
+        if (!email) {
+            document.getElementById('emailError').textContent = 'Email Address is required.';
+            isValid = false;
+        } else if (!validateEmail(email)) {
+            document.getElementById('emailError').textContent = 'Please enter a valid email address.';
+            isValid = false;
+        } else if (email.length > 255) {
+            document.getElementById('emailError').textContent = 'Email Address must not exceed 255 characters.';
+            isValid = false;
+        }
+
+        // Validate Password
+        const password = document.getElementById('password').value.trim();
+        if (!password) {
+            document.getElementById('passwordError').textContent = 'Password is required.';
+            isValid = false;
+        } else if (password.length < 8 || password.length > 128 || !/^(?=.*[a-zA-Z])(?=.*\d).+$/.test(password)) {
+            document.getElementById('passwordError').textContent = 'Password must be between 8 and 128 characters long and include a mix of letters and numbers.';
+            isValid = false;
+        }
+
+        // Validate Phone Number (Optional)
+        const phone = document.getElementById('phone').value.trim();
+        if (phone && phone.length > 15) {
+            document.getElementById('phoneError').textContent = 'Phone Number must not exceed 15 characters.';
+            isValid = false;
+        }
+
+        // If all validations pass, submit the form
+        if (isValid) {
+            alert('Form submitted successfully!');
+            this.submit();
+        }
+    });
+
+    function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(String(email).toLowerCase());
     }
 </script>
 
