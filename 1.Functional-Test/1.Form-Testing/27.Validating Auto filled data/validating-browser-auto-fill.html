@@ -126,32 +126,29 @@
 </div>
 
 <script>
-    // Load saved data from localStorage when the page is loaded
-    window.onload = function() {
-        const formData = JSON.parse(localStorage.getItem('formData')) || {};
+    document.addEventListener('DOMContentLoaded', function() {
+        // Load saved data from localStorage
+        const savedData = JSON.parse(localStorage.getItem('formData'));
 
-        document.getElementById('username').value = formData.username || '';
-        document.getElementById('email').value = formData.email || '';
-        document.getElementById('password').value = formData.password || '';
-        document.getElementById('phone').value = formData.phone || '';
-        document.getElementById('address').value = formData.address || '';
-    };
-
-    // Save form data to localStorage on input changes
-    document.getElementById('registrationForm').addEventListener('input', function() {
-        const formData = {
-            username: document.getElementById('username').value,
-            email: document.getElementById('email').value,
-            password: document.getElementById('password').value,
-            phone: document.getElementById('phone').value,
-            address: document.getElementById('address').value
-        };
-        localStorage.setItem('formData', JSON.stringify(formData));
+        if (savedData) {
+            document.getElementById('username').value = savedData.username || '';
+            document.getElementById('email').value = savedData.email || '';
+            document.getElementById('password').value = savedData.password || '';
+            document.getElementById('phone').value = savedData.phone || '';
+            document.getElementById('address').value = savedData.address || '';
+        }
     });
 
-    // Clear form data from localStorage when form is reset
-    document.getElementById('registrationForm').addEventListener('reset', function() {
-        localStorage.removeItem('formData');
+    document.getElementById('registrationForm').addEventListener('input', function() {
+        // Save data to localStorage on input change
+        const formData = {
+            username: document.getElementById('username').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            password: document.getElementById('password').value.trim(),
+            phone: document.getElementById('phone').value.trim(),
+            address: document.getElementById('address').value.trim()
+        };
+        localStorage.setItem('formData', JSON.stringify(formData));
     });
 
     document.getElementById('registrationForm').addEventListener('submit', function(event) {
@@ -195,6 +192,7 @@
         // If all validations pass, submit the form
         if (isValid) {
             alert('Form submitted successfully!');
+            localStorage.removeItem('formData'); // Clear saved data on successful submission
             this.submit();
         }
     });

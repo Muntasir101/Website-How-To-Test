@@ -1,0 +1,10 @@
+How It Works
+Load Saved Data on Page Load:
+
+When the page loads, the DOMContentLoaded event listener retrieves saved data from localStorage and populates the form fields with it.
+Auto-Save Data on Input Change:
+
+The input event listener on the form saves the current values of the form fields to localStorage every time a user changes the input.
+Clear Saved Data on Form Submission:
+
+Upon successful form submission, the formData is removed from localStorage to clear the saved data.

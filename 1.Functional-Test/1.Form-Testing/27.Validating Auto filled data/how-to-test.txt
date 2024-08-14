@@ -1,0 +1,99 @@
+Testing Auto-Fill
+To test the auto-fill functionality, follow these steps:
+
+Open the Form:
+
+Start with an empty form.
+Enter Data:
+
+Fill in the form fields with data.
+Refresh the Page:
+
+Reload the page to check if the data is still present in the form fields.
+Edit Data:
+
+Modify the data in the fields and ensure that the changes are reflected in localStorage.
+Reset Form:
+
+Click the Reset button and confirm that the form fields are cleared and the localStorage data is removed.
+Submit Form:
+
+Submit the form and verify that the data is removed from localStorage.
+
+Test Scenarios for Auto-Fill Functionality
+Initial Page Load with Empty Form
+
+Description: Load the form page without any previous saved data.
+Expected Result: All form fields should be empty.
+Auto-Fill on Page Load After Saving Data
+
+Description: Enter data in all form fields and reload the page.
+Steps:
+Open the form.
+Enter data into each field.
+Refresh the page.
+Expected Result: The form fields should be populated with the previously entered data.
+Auto-Save on Input Change
+
+Description: Check if data is saved to localStorage as you type in the form fields.
+Steps:
+Open the form.
+Enter data in one or more fields.
+Inspect localStorage to verify if data is being saved.
+Expected Result: Data should be stored in localStorage with each change.
+Clear Form and Auto-Save Data Removal
+
+Description: Check if localStorage data is cleared when the form is reset.
+Steps:
+Open the form and enter data.
+Click the Reset button.
+Check localStorage for the presence of the data.
+Expected Result: The localStorage data should be cleared after resetting the form.
+Submit Form and Remove Saved Data
+
+Description: Verify that localStorage data is removed upon form submission.
+Steps:
+Open the form.
+Enter data into the form fields.
+Submit the form.
+Check localStorage for the presence of the data.
+Expected Result: The data in localStorage should be removed after form submission.
+Validate Form Data Persistence After Page Reload
+
+Description: Ensure that form data persists across multiple page reloads.
+Steps:
+Open the form.
+Enter data into the fields.
+Reload the page several times.
+Expected Result: The form fields should retain the entered data across page reloads.
+Submit Form with Invalid Data and Verify Data Retention
+
+Description: Submit the form with invalid data and check if the data is still retained in localStorage.
+Steps:
+Enter invalid data in required fields.
+Submit the form.
+Inspect localStorage to verify if the data is retained.
+Expected Result: The data should remain in localStorage even if the form submission fails due to validation errors.
+Check Auto-Fill After Form Reset
+
+Description: Verify that auto-fill works correctly after the form is reset and reloaded.
+Steps:
+Open the form and enter data.
+Reset the form.
+Enter new data and reload the page.
+Expected Result: The new data should be retained in localStorage and filled in after reloading.
+Additional Test Scenarios
+Form Validation with Auto-Fill Data
+
+Description: Test form validation with auto-filled data.
+Steps:
+Open the form with auto-filled data.
+Submit the form without changing any fields.
+Expected Result: The form should validate based on the auto-filled data.
+Browser Auto-Fill vs. Custom Auto-Fill
+
+Description: Compare browser auto-fill functionality with the custom auto-fill implemented using localStorage.
+Steps:
+Enter data manually in the form.
+Use browser auto-fill (if supported) and observe the behavior.
+Expected Result: Custom auto-fill using localStorage should work alongside or be compatible with browser auto-fill.

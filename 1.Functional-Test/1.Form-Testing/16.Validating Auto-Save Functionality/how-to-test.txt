@@ -1,76 +1,86 @@
-Validating Auto-Save Functionality involves ensuring that a form automatically saves user data periodically or during user interactions to prevent data loss. This is particularly useful for long forms or applications where users might be interrupted.
+Testing the auto-save feature involves several steps to ensure that data is saved, retrieved, and cleared correctly. Here are some test scenarios you can use:
 
-1. Test Scenarios
-Scenario 1: Periodic Auto-Save
+1. Initial Page Load
+Scenario:
 
-Objective: Verify that the form data is automatically saved at regular intervals.
+Open the form page for the first time.
+Expected Result:
+
+No data should be pre-filled in the form fields since localStorage should be empty initially.
+2. Form Input Auto-Save
+Scenario:
+
+Enter data into each form field (Username, Email, Password, Phone Number, Address).
+Check localStorage using browser developer tools to confirm that the data is saved.
 Steps:
-Fill out the form with data.
-Wait for the auto-save interval to pass.
-Check if the data has been saved by refreshing the page or navigating away and returning to the form.
-Scenario 2: Auto-Save on Input Change
 
-Objective: Ensure that the form data is saved whenever the user makes changes to the input fields.
+Fill in each form field.
+Open browser developer tools (F12 or Ctrl+Shift+I).
+Go to the Application tab (or Storage in some browsers).
+Look for localStorage and check the formData key.
+Expected Result:
+
+The formData key should be present in localStorage.
+The values should match what was entered in the form fields.
+3. Page Reload
+Scenario:
+
+Reload the page after entering data into the form.
 Steps:
-Start filling out the form.
-Change data in any of the fields.
-Navigate away from the form or refresh the page.
-Check if the last entered data is preserved.
-Scenario 3: Auto-Save on Form Submission
 
-Objective: Verify that the form data is saved when the user submits the form, even if the submission process encounters errors.
+Enter data into the form fields.
+Refresh the page (F5 or Ctrl+R).
+Expected Result:
+
+The form fields should be pre-filled with the saved data from localStorage.
+4. Form Reset
+Scenario:
+
+Use the Reset button on the form.
 Steps:
-Fill out the form and submit it.
-Simulate a submission error (e.g., server error).
-Verify if the form data was saved and is preserved upon retrying submission.
-Scenario 4: Auto-Save During Session Timeout
 
-Objective: Ensure that data is saved automatically if the session is about to time out or is interrupted.
+Enter data into the form fields.
+Click the Reset button.
+Expected Result:
+
+The form fields should be cleared.
+The localStorage should be emptied (the formData key should be removed).
+5. Form Submission
+Scenario:
+
+Submit the form with valid data.
 Steps:
-Start filling out the form.
-Simulate a session timeout or interruption.
-Verify if the form data is saved and restored upon re-login or session recovery.
-Scenario 5: Auto-Save Confirmation
 
-Objective: Ensure that users receive confirmation or indication that their data has been saved automatically.
+Enter valid data into all form fields.
+Click the Register button.
+Expected Result:
+
+An alert should appear indicating successful submission.
+The form should be submitted (if the form's action URL is set up to handle submissions).
+6. Form Validation
+Scenario:
+
+Enter invalid data into required fields and submit the form.
 Steps:
-Make changes to the form.
-Verify if there is any indication (e.g., a message or icon) that the data has been auto-saved.
-2. How to Test
-Manual Testing:
 
-Prepare the Form:
+Leave one or more required fields empty or enter invalid data.
+Click the Register button.
+Expected Result:
 
-Load the form in a web browser.
-Test Periodic Auto-Save:
+Error messages should be displayed for invalid fields.
+The form should not be submitted.
+7. Auto-Save After Editing
+Scenario:
 
-Fill out the form with data.
-Wait for the auto-save interval.
-Refresh the page or navigate away.
-Check if the data is retained.
-Test Auto-Save on Input Change:
+Edit existing data in the form.
+Steps:
 
-Make changes to form fields.
-Navigate away or refresh the page.
-Check if the changes are saved.
-Test Auto-Save on Form Submission:
+Open the page with pre-filled data from localStorage.
+Modify some of the data in the form fields.
+Check localStorage to confirm that the changes are saved.
+Expected Result:
 
-Complete the form and submit.
-Simulate an error during submission.
-Check if the form data is preserved.
-Test During Session Timeout:
-
-Fill out the form and simulate a timeout.
-Check if the data is saved and can be recovered.
-Check Auto-Save Confirmation:
-
-Make changes to the form.
-Verify if there’s any confirmation that the data has been auto-saved.
-Automated Testing:
-
-WebDriver-Based Testing (e.g., Selenium):
-
-Automate scenarios for periodic auto-save, input changes, and error handling to check if the data is correctly saved and restored.
-Testing Frameworks (e.g., Cypress):
-
-Write tests to simulate user interactions and check if auto-save functionality works as intended.
+localStorage should be updated with the new values.
+Tools for Testing
+Browser Developer Tools: Use the Application or Storage tab to inspect localStorage.
+Console: Use console.log(localStorage.getItem('formData')) to manually check saved data.
