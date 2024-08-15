@@ -1,0 +1,26 @@
+How It Works
+Login Page:
+
+The login form checks the user's credentials against predefined values.
+If the credentials are incorrect, the failed attempts counter increments.
+After 5 failed attempts, the account is locked for 5 minutes.
+If the credentials are correct, the user is redirected based on their role, and the session timer starts.
+User Dashboard (Session Timeout):
+
+The session timeout is set to 2 minutes.
+If the user is inactive for 2 minutes, they are redirected to the login page.
+Notes:
+You can adjust the maximum failed attempts, lockout time, and session timeout according to your requirements.
+The implementation uses localStorage to track failed attempts and lockout status, and sessionStorage to track the session timeout.
+The example assumes that you're only managing three roles: Admin, Manager, and User. You can expand or modify this logic as needed.
+
+Account Lockout Time Check:
+
+Added code to check if the lockout period has expired when the page loads.
+If the lockout period has not expired, display the remaining time and disable the login button.
+Reset Mechanism:
+
+If the lockout period has expired, reset the failed attempts and allow login.
+Error Messages and Attempt Display:
+
+Updated error messages and remaining attempts display based on the current state of localStorage.

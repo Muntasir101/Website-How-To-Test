@@ -1,0 +1,101 @@
+Test Scenario 1: Verify Initial Login Attempt
+Objective: Ensure the login page loads correctly with no lockout.
+
+Steps:
+
+Open the login page.
+Observe the initial state of the page.
+Expected Result:
+
+The login form should be displayed with fields for username and password.
+The "Remaining Attempts" message should be blank.
+The login button should be enabled.
+Test Scenario 2: Verify Incorrect Login Attempts and Lockout
+Objective: Ensure that incorrect login attempts result in account lockout after the maximum number of attempts.
+
+Steps:
+
+Open the login page.
+Attempt to log in with incorrect credentials (e.g., username: wronguser, password: wrongpass).
+Repeat the incorrect login attempts until the maximum allowed number of attempts is reached.
+Expected Result:
+
+After the maximum number of attempts (e.g., 5), the account should be locked.
+The error message should indicate that the account is locked.
+The "Remaining Attempts" message should be blank.
+The login button should be disabled.
+An item for lockout time should be saved in localStorage.
+Test Scenario 3: Verify Lockout Period Expiry and Account Unlock
+Objective: Ensure that the account is unlocked after the lockout period (e.g., 5 minutes) has expired.
+
+Steps:
+
+Complete the maximum number of incorrect login attempts to lock the account.
+Wait for more than 5 minutes.
+Refresh the login page or reopen it.
+Expected Result:
+
+The login form should be displayed with fields for username and password.
+The "Remaining Attempts" message should be blank.
+The login button should be enabled.
+The failed attempts count should be reset.
+The lockout time should be cleared from localStorage.
+Test Scenario 4: Verify Display of Remaining Attempts Before Lockout
+Objective: Ensure that the number of remaining attempts is displayed correctly before the account gets locked.
+
+Steps:
+
+Open the login page.
+Attempt to log in with incorrect credentials.
+Observe the "Remaining Attempts" message after each failed attempt until it is close to the lockout threshold.
+Expected Result:
+
+The "Remaining Attempts" message should correctly display the number of remaining attempts before the account lockout.
+Test Scenario 5: Verify Lockout Message During Lockout Period
+Objective: Ensure that the lockout message is displayed correctly and provides the remaining lockout time.
+
+Steps:
+
+Complete the maximum number of incorrect login attempts to lock the account.
+Observe the lockout message and remaining time.
+Expected Result:
+
+The message should indicate that the account is locked.
+The remaining time until the account is unlocked should be displayed correctly.
+The login button should be disabled.
+Test Scenario 6: Verify Role-Based Redirection After Successful Login
+Objective: Ensure that users are redirected to the appropriate dashboard based on their role after a successful login.
+
+Steps:
+
+Open the login page.
+Attempt to log in with correct credentials for each role (e.g., admin, manager, user).
+Expected Result:
+
+Admin should be redirected to ./session-user-dashboard.html.
+Manager should be redirected to manager.html.
+User should be redirected to user.html.
+Test Scenario 7: Verify Session Timeout Handling
+Objective: Ensure that the session timeout is handled correctly and the user is redirected to the login page after the session expires.
+
+Steps:
+
+Log in successfully and start a session.
+Leave the page inactive for more than the session timeout period.
+Attempt to interact with the page.
+Expected Result:
+
+The user should be redirected to the login page.
+An alert should notify the user that the session has timed out.
+Test Scenario 8: Verify Display of Error Messages
+Objective: Ensure that appropriate error messages are displayed for incorrect credentials and account lockout.
+
+Steps:
+
+Attempt to log in with incorrect credentials.
+Observe the error message displayed for invalid login.
+Complete the maximum number of incorrect attempts and observe the lockout message.
+Expected Result:
+
+The error message for invalid login should be displayed for incorrect credentials.
+The lockout message should be displayed after reaching the maximum number of attempts.
