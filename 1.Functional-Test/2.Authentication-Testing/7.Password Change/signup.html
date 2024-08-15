@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        header {
+            background-color: #1a1a2e;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-align: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 15px;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+        header a:hover {
+            color: #f39c12;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 30px;
+            font-size: 24px;
+            color: #333;
+            text-transform: uppercase;
+        }
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-bottom: 20px;
+            display: block;
+            text-align: left;
+        }
+        .password-rules {
+            text-align: left;
+            font-size: 14px;
+            margin-bottom: 20px;
+            display: block;
+        }
+        .password-rules span {
+            color: green;
+        }
+        .password-rules span.invalid {
+            color: red;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #1a1a2e;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #f39c12;
+        }
+        .login-link {
+            margin-top: 20px;
+            display: block;
+            color: #1a1a2e;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .login-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="/index.html">Back to Home</a>
+    <a href="./login.html">Already have an account? Log in</a>
+</header>
+
+<div class="container">
+    <h1>Sign Up</h1>
+    <form id="signUpForm">
+        <!-- Username (Mandatory) -->
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+        <span class="error" id="usernameError"></span>
+
+        <!-- Password (Mandatory) -->
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+        <span class="error" id="passwordError"></span>
+
+        <!-- Confirm Password -->
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required>
+        <span class="error" id="confirmPasswordError"></span>
+
+        <!-- Password Rules -->
+        <div class="password-rules" id="passwordRules">
+            <p>Password must:</p>
+            <p><span id="minLength" class="invalid">• Be at least 8 characters long</span></p>
+            <p><span id="uppercase" class="invalid">• Contain at least one uppercase letter</span></p>
+            <p><span id="number" class="invalid">• Contain at least one number</span></p>
+            <p><span id="specialChar" class="invalid">• Contain at least one special character (e.g., !@#$%^&*)</span></p>
+        </div>
+
+        <!-- Sign Up Button -->
+        <button type="submit">Sign Up</button>
+    </form>
+</div>
+
+<script>
+    const passwordInput = document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('confirmPassword');
+    const minLengthSpan = document.getElementById('minLength');
+    const uppercaseSpan = document.getElementById('uppercase');
+    const numberSpan = document.getElementById('number');
+    const specialCharSpan = document.getElementById('specialChar');
+
+    function validatePassword(password) {
+        const minLength = password.length >= 8;
+        const hasUppercase = /[A-Z]/.test(password);
+        const hasNumber = /[0-9]/.test(password);
+        const hasSpecialChar = /[!@#$%^&*]/.test(password);
+
+        minLengthSpan.classList.toggle('invalid', !minLength);
+        minLengthSpan.classList.toggle('valid', minLength);
+        uppercaseSpan.classList.toggle('invalid', !hasUppercase);
+        uppercaseSpan.classList.toggle('valid', hasUppercase);
+        numberSpan.classList.toggle('invalid', !hasNumber);
+        numberSpan.classList.toggle('valid', hasNumber);
+        specialCharSpan.classList.toggle('invalid', !hasSpecialChar);
+        specialCharSpan.classList.toggle('valid', hasSpecialChar);
+    }
+
+    function validatePasswordsMatch() {
+        const password = passwordInput.value.trim();
+        const confirmPassword = confirmPasswordInput.value.trim();
+        return password === confirmPassword;
+    }
+
+    passwordInput.addEventListener('input', (event) => {
+        validatePassword(event.target.value);
+        if (!validatePasswordsMatch()) {
+            document.getElementById('confirmPasswordError').textContent = 'Passwords do not match.';
+        } else {
+            document.getElementById('confirmPasswordError').textContent = '';
+        }
+    });
+
+    confirmPasswordInput.addEventListener('input', (event) => {
+        if (!validatePasswordsMatch()) {
+            document.getElementById('confirmPasswordError').textContent = 'Passwords do not match.';
+        } else {
+            document.getElementById('confirmPasswordError').textContent = '';
+        }
+    });
+
+    document.getElementById('signUpForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        document.getElementById('usernameError').textContent = '';
+        document.getElementById('passwordError').textContent = '';
+        document.getElementById('confirmPasswordError').textContent = '';
+
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+        const confirmPassword = document.getElementById('confirmPassword').value.trim();
+
+        // Simple client-side validation for demonstration
+        if (password.length < 8 || !/[A-Z]/.test(password) || !/[0-9]/.test(password) || !/[!@#$%^&*]/.test(password)) {
+            document.getElementById('passwordError').textContent = 'Password does not meet the required criteria.';
+            return;
+        }
+
+        if (!validatePasswordsMatch()) {
+            document.getElementById('confirmPasswordError').textContent = 'Passwords do not match.';
+            return;
+        }
+
+        // Save credentials to localStorage
+        localStorage.setItem('username', username);
+        localStorage.setItem('password', password);
+
+        alert('Sign up successful! You can now log in.');
+        window.location.href = './login.html'; // Redirect to login page
+    });
+
+</script>
+
+</body>
+</html>
