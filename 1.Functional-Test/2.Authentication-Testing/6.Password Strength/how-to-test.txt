@@ -1,81 +1,108 @@
-Test Scenarios for Sign-Up Page
-1. Validate Password Requirements
-Test Case: Valid Password
+Test Scenarios for Sign-Up Form
+1. Field Validation Tests
+Valid Username and Password
 
-Description: Check if a valid password that meets all criteria is accepted.
-Test Steps:
-Enter a valid username.
-Enter a password that meets all criteria (e.g., Valid1@Pass).
-Submit the form.
-Expected Result: The form should submit successfully, and the user should see a "Sign up successful!" message.
-Test Case: Invalid Password (Less than 8 Characters)
+Objective: Ensure the form submits successfully with valid data.
+Steps:
+Enter a valid username (e.g., validuser).
+Enter a valid password (e.g., Valid1!).
+Confirm the password (e.g., Valid1!).
+Click "Sign Up".
+Expected Result: Form submission is successful, and a success message is displayed.
+Password Length Test
 
-Description: Check if a password with fewer than 8 characters is rejected.
-Test Steps:
-Enter a valid username.
-Enter a password that is less than 8 characters long (e.g., Short1@).
-Submit the form.
-Expected Result: An error message should appear stating "Password does not meet the required criteria."
-Test Case: Invalid Password (No Uppercase Letter)
+Objective: Check if the password length validation works.
+Steps:
+Enter a valid username (e.g., validuser).
+Enter a password shorter than 8 characters (e.g., Short1!).
+Confirm the password.
+Click "Sign Up".
+Expected Result: Error message indicating the password must be at least 8 characters long.
+Uppercase Letter Test
 
-Description: Check if a password without an uppercase letter is rejected.
-Test Steps:
-Enter a valid username.
-Enter a password without an uppercase letter (e.g., valid1@pass).
-Submit the form.
-Expected Result: An error message should appear stating "Password does not meet the required criteria."
-Test Case: Invalid Password (No Number)
+Objective: Validate that at least one uppercase letter is required.
+Steps:
+Enter a valid username (e.g., validuser).
+Enter a password without uppercase letters (e.g., password1!).
+Confirm the password.
+Click "Sign Up".
+Expected Result: Error message indicating the password must contain at least one uppercase letter.
+Number Test
 
-Description: Check if a password without a number is rejected.
-Test Steps:
-Enter a valid username.
-Enter a password without a number (e.g., ValidPassword@).
-Submit the form.
-Expected Result: An error message should appear stating "Password does not meet the required criteria."
-Test Case: Invalid Password (No Special Character)
+Objective: Validate that at least one number is required in the password.
+Steps:
+Enter a valid username (e.g., validuser).
+Enter a password without numbers (e.g., Password!).
+Confirm the password.
+Click "Sign Up".
+Expected Result: Error message indicating the password must contain at least one number.
+Special Character Test
 
-Description: Check if a password without a special character is rejected.
-Test Steps:
-Enter a valid username.
-Enter a password without a special character (e.g., Valid1234).
-Submit the form.
-Expected Result: An error message should appear stating "Password does not meet the required criteria."
-Test Case: Password Meets All Criteria
+Objective: Check if the password must contain at least one special character.
+Steps:
+Enter a valid username (e.g., validuser).
+Enter a password without special characters (e.g., Password1).
+Confirm the password.
+Click "Sign Up".
+Expected Result: Error message indicating the password must contain at least one special character.
+Password Confirmation Test (Matching)
 
-Description: Ensure that each password requirement is met and validated in real-time.
-Test Steps:
-Enter a valid username.
-Type a password that meets all criteria (e.g., Valid1@Pass).
-Observe the status of each password rule.
-Expected Result: Each rule should be marked as valid (i.e., the text color should turn green).
-Test Case: Password Visibility Toggle
+Objective: Verify that passwords must match.
+Steps:
+Enter a valid username (e.g., validuser).
+Enter a valid password (e.g., Valid1!).
+Enter the same password in the confirmation field (e.g., Valid1!).
+Click "Sign Up".
+Expected Result: Form submission is successful, and a success message is displayed.
+Password Confirmation Test (Mismatch)
 
-Description: Ensure that the password visibility can be toggled for user convenience.
-Test Steps:
-Enter a password in the input field.
-Toggle the password visibility (if such an option exists).
-Verify that the password can be seen or hidden accordingly.
-Expected Result: The password visibility should toggle between hidden and visible.
-Test Case: Form Submission with All Valid Inputs
+Objective: Ensure the system notifies users if passwords do not match.
+Steps:
+Enter a valid username (e.g., validuser).
+Enter a valid password (e.g., Valid1!).
+Enter a different password in the confirmation field (e.g., Valid2!).
+Click "Sign Up".
+Expected Result: Error message indicating the passwords do not match.
+2. Real-Time Feedback Tests
+Password Strength Indicator
 
-Description: Ensure that the form can be submitted successfully when all fields are valid.
-Test Steps:
-Enter a valid username.
-Enter a valid password meeting all criteria.
-Submit the form.
-Expected Result: The form should be submitted successfully, and the user should receive a "Sign up successful!" message.
-Test Case: Field Focus Behavior
+Objective: Validate that the password strength indicator updates correctly.
+Steps:
+Enter a weak password (e.g., password).
+Observe the strength indicator.
+Enter a moderate password (e.g., Password1).
+Observe the strength indicator.
+Enter a strong password (e.g., Valid1!Strong).
+Observe the strength indicator.
+Expected Result: Strength indicator should reflect "Weak", "Moderate", or "Strong" based on password criteria.
+Error Message Display for Password Rules
 
-Description: Check if the focus on the password field properly updates the password rule status.
-Test Steps:
-Click on the password field.
-Type a password that gradually meets the criteria.
-Observe how the password rules update in real-time.
-Expected Result: The password rules should update dynamically based on the input.
-Test Data for Validation:
-Valid Password Example: Valid1@Pass
-Invalid Password Examples:
-Short password: Short1@
-No uppercase: valid1@pass
-No number: ValidPassword@
-No special character: Valid1234
+Objective: Verify that error messages for password rules display correctly.
+Steps:
+Enter a password that fails one or more rules (e.g., password).
+Observe the error messages for each password rule.
+Expected Result: Appropriate error messages are displayed for each password rule not met.
+Error Message Display for Password Confirmation
+
+Objective: Check that the error message for password mismatch displays correctly.
+Steps:
+Enter a valid password.
+Enter a different password in the confirmation field.
+Observe the error message for password confirmation.
+Expected Result: Error message indicating that passwords do not match.
+3. Usability Tests
+Empty Fields Submission
+
+Objective: Ensure that submitting the form with empty fields displays appropriate error messages.
+Steps:
+Leave all fields empty.
+Click "Sign Up".
+Expected Result: Error messages indicating that all fields are required.
+Field Focus and Blur
+
+Objective: Check if real-time validation occurs when focusing out of fields.
+Steps:
+Enter invalid data in the password field.
+Focus out of the password field.
+Check if real-time validation messages are displayed.
+Expected Result: Validation messages should display correctly when focus is lost from the field.
