@@ -1,0 +1,6 @@
+Below is an example of a sign-up page that includes these password rules:
+
+Password must be at least 8 characters long.
+Password must include at least one uppercase letter.
+Password must include at least one number.
+Password must include at least one special character.
