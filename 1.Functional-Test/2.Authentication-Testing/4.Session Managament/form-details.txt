@@ -1,0 +1,11 @@
+I'll show you how to implement a basic session timeout mechanism using JavaScript on the client side.
+
+Key Points:
+Session Management: Set a timeout that logs out the user after a period of inactivity.
+Session Storage: Use sessionStorage to keep track of the user's session activity.
+
+Explanation:
+Session Timeout Configuration: sessionTimeout is set to 10 minutes (600,000 milliseconds).
+Session Timer: startSessionTimer sets a session start time in sessionStorage and starts an interval to check for session timeout.
+Check Session Timeout: checkSessionTimeout checks if the session has expired and redirects to the login page if so.
+User Interaction: mousemove and keydown events are used to reset the session timer, keeping the session active as long as the user is interacting with the page.

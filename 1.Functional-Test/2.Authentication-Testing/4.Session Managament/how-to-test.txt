@@ -1,0 +1,68 @@
+Test Scenarios for Session Management
+1. Successful Login and Session Timeout
+Test Scenario: Log in with valid credentials and wait for the session timeout period to elapse.
+Steps:
+Open the login page (/index.html).
+Enter valid credentials (e.g., username: admin, password: adminpass).
+Click the "Login" button.
+Wait for 2 minutes (120 seconds) without any user interaction.
+Expected Result:
+After 2 minutes of inactivity, an alert should appear saying "Session timed out. Please log in again."
+The page should automatically redirect to the login page (/index.html).
+2. Reset Session Timer on User Activity
+Test Scenario: Verify that user activity (mouse movement or keyboard input) resets the session timer.
+Steps:
+Log in with valid credentials.
+After accessing the dashboard, wait for 1 minute.
+Move the mouse or type on the keyboard.
+Wait for an additional 1 minute.
+Expected Result:
+The session timer should reset after detecting user activity.
+The user should not be logged out and should remain on the dashboard.
+3. Session Timeout During Page Navigation
+Test Scenario: Verify that navigating away and returning to the page resets the session timer.
+Steps:
+Log in with valid credentials.
+Access the Admin Dashboard.
+Wait for 1 minute.
+Navigate to another page (e.g., logout or another section).
+Return to the Admin Dashboard after 1 minute.
+Expected Result:
+The session timer should be reset upon returning to the Admin Dashboard.
+If the session was not timed out during navigation, the user should still be logged in and able to access the dashboard.
+4. Multiple Tabs/Windows Session Timeout
+Test Scenario: Test if the session timeout behavior is consistent across multiple tabs or windows.
+Steps:
+Log in with valid credentials in one tab/window.
+Open another tab/window and navigate to the Admin Dashboard.
+Leave both tabs/windows inactive for 2 minutes.
+Expected Result:
+Both tabs/windows should log out the user after 2 minutes of inactivity.
+Both tabs/windows should redirect to the login page after the session times out.
+5. Session Handling After Manual Interaction
+Test Scenario: Verify that manual interaction with the session storage API does not affect session timeout functionality.
+Steps:
+Log in with valid credentials.
+Access the Admin Dashboard.
+Use browser developer tools to manually modify session storage.
+Leave the page inactive for 2 minutes.
+Expected Result:
+The session should still time out after 2 minutes of inactivity, regardless of manual modifications to session storage.
+The user should be redirected to the login page.
+6. Edge Case: Network Interruption During Session
+Test Scenario: Simulate a network interruption to test session timeout behavior.
+Steps:
+Log in with valid credentials.
+Access the Admin Dashboard.
+Simulate a network interruption (e.g., disconnect from the internet).
+Wait for 2 minutes with the network disconnected.
+Reconnect the network and attempt to access the dashboard.
+Expected Result:
+If the session times out during the network interruption, the user should be redirected to the login page once the network is reconnected.
+7. Concurrent Session Management
+Test Scenario: Verify that concurrent sessions (e.g., logging in from multiple devices) handle session timeout independently.
+Steps:
+Log in with valid credentials on two different devices or browsers.
+Leave both sessions inactive for 2 minutes.
+Expected Result:
+Both sessions should time out independently and redirect to the login page after 2 minutes of inactivity.
