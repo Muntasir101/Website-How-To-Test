@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        header {
+            background-color: #1a1a2e;
+            color: #ffffff;
+            padding: 15px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 15px;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+        header a:hover {
+            color: #f39c12;
+        }
+        .container {
+            width: 80%;
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #333;
+            text-align: center;
+            font-weight: bold;
+        }
+        form {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="email"], select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 12px 20px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #1a1a2e;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #f39c12;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .action-btns {
+            display: flex;
+            gap: 10px;
+        }
+        .action-btns button {
+            padding: 6px 12px;
+            font-size: 14px;
+            background-color: #e74c3c;
+        }
+        .action-btns button.edit-btn {
+            background-color: #3498db;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="./admin.html">Dashboard</a> | 
+    <a href="./logout.html">Logout</a>
+</header>
+
+<div class="container">
+    <h1>User Management</h1>
+
+    <form id="userForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="role">Role:</label>
+        <select id="role" name="role" required>
+            <option value="Admin">Admin</option>
+            <option value="Manager">Manager</option>
+            <option value="User">User</option>
+        </select>
+
+        <button type="submit">Create/Update User</button>
+    </form>
+
+    <table id="userTable">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Dynamic user rows will be added here -->
+        </tbody>
+    </table>
+</div>
+
+<script>
+    const userForm = document.getElementById('userForm');
+    const userTable = document.getElementById('userTable').querySelector('tbody');
+
+    let users = [];
+
+    userForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const username = document.getElementById('username').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const role = document.getElementById('role').value;
+
+        const userIndex = users.findIndex(user => user.username === username);
+
+        if (userIndex > -1) {
+            // Update existing user
+            users[userIndex].email = email;
+            users[userIndex].role = role;
+        } else {
+            // Create new user
+            users.push({ username, email, role });
+        }
+
+        renderUserTable();
+        userForm.reset();
+    });
+
+    function renderUserTable() {
+        userTable.innerHTML = '';
+        users.forEach(user => {
+            const row = document.createElement('tr');
+
+            row.innerHTML = `
+                <td>${user.username}</td>
+                <td>${user.email}</td>
+                <td>${user.role}</td>
+                <td class="action-btns">
+                    <button class="edit-btn" onclick="editUser('${user.username}')">Edit</button>
+                    <button onclick="deleteUser('${user.username}')">Delete</button>
+                </td>
+            `;
+
+            userTable.appendChild(row);
+        });
+    }
+
+    function editUser(username) {
+        const user = users.find(user => user.username === username);
+        document.getElementById('username').value = user.username;
+        document.getElementById('email').value = user.email;
+        document.getElementById('role').value = user.role;
+    }
+
+    function deleteUser(username) {
+        users = users.filter(user => user.username !== username);
+        renderUserTable();
+    }
+
+    // Example data (you can remove or replace this)
+    users = [
+        { username: 'admin', email: 'admin@example.com', role: 'Admin' },
+        { username: 'manager', email: 'manager@example.com', role: 'Manager' },
+        { username: 'user', email: 'user@example.com', role: 'User' }
+    ];
+
+    renderUserTable();
+</script>
+
+</body>
+</html>

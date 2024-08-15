@@ -1,0 +1,13 @@
+Predefined Credentials:
+
+Admin:
+Username: admin
+Password: adminpass
+
+Manager:
+Username: manager
+Password: managerpass
+
+User:
+Username: user
+Password: userpass

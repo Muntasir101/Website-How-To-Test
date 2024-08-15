@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        header {
+            background-color: #1a1a2e;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-align: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 15px;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+        header a:hover {
+            color: #f39c12;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 30px;
+            font-size: 24px;
+            color: #333;
+            text-transform: uppercase;
+        }
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-bottom: 20px;
+            display: block;
+            text-align: left;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #1a1a2e;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #f39c12;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="/index.html">Back to Home</a>
+</header>
+
+<div class="container">
+    <h1>Login</h1>
+    <form id="loginForm">
+        <!-- Username (Mandatory) -->
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+        <span class="error" id="usernameError"></span>
+
+        <!-- Password (Mandatory) -->
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+        <span class="error" id="passwordError"></span>
+
+        <!-- Login Button -->
+        <button type="submit">Login</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Clear previous error messages
+        document.getElementById('usernameError').textContent = '';
+        document.getElementById('passwordError').textContent = '';
+
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+
+        let userRole;
+
+        // Predefined credentials
+        const credentials = {
+            admin: 'adminpass',
+            manager: 'managerpass',
+            user: 'userpass'
+        };
+
+        // Simulated authentication and role assignment
+        if (username === 'admin' && password === credentials.admin) {
+            userRole = 'Admin';
+        } else if (username === 'manager' && password === credentials.manager) {
+            userRole = 'Manager';
+        } else if (username === 'user' && password === credentials.user) {
+            userRole = 'User';
+        } else {
+
+            document.getElementById('passwordError').textContent = 'Invalid username or password';
+            return;
+        }
+
+        // Role-based redirection
+        switch(userRole) {
+            case 'Admin':
+                window.location.href = 'admin.html';
+                break;
+            case 'Manager':
+                window.location.href = 'manager.html';
+                break;
+            case 'User':
+                window.location.href = 'user.html';
+                break;
+            default:
+                alert('Invalid role');
+                break;
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #ffffff;
+            padding: 15px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 15px;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+        header a:hover {
+            color: #ddd;
+        }
+        .container {
+            width: 70%;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+        input[type="text"], input[type="email"], input[type="password"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #333;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        .message {
+            color: green;
+            font-size: 16px;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .message.error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="user.html">Back to Dashboard</a> |
+    <a href="logout.html">Logout</a>
+</header>
+
+<div class="container">
+    <h1>User Profile</h1>
+
+    <form id="userProfileForm">
+        <!-- Username (Read-only) -->
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" value="currentUsername" readonly>
+
+        <!-- Email -->
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="currentEmail" required>
+
+        <!-- Password -->
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+
+        <!-- Confirm Password -->
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword">
+
+        <button type="submit">Update Profile</button>
+
+        <div class="message" id="message"></div>
+    </form>
+</div>
+
+<script>
+    const userProfileForm = document.getElementById('userProfileForm');
+    const message = document.getElementById('message');
+
+    userProfileForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value.trim();
+        const confirmPassword = document.getElementById('confirmPassword').value.trim();
+
+        if (password && password !== confirmPassword) {
+            message.textContent = 'Passwords do not match.';
+            message.className = 'message error';
+            return;
+        }
+
+        // Simulate updating profile
+        message.textContent = 'Profile updated successfully!';
+        message.className = 'message';
+
+        // Implement actual update logic here (e.g., AJAX request to server)
+    });
+</script>
+
+</body>
+</html>
