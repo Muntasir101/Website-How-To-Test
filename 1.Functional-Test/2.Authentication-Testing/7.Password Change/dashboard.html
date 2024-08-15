@@ -1,3 +1,134 @@
 <!DOCTYPE html>
-<h1>Need to create this page for dashboard where user can go his profile and update password.</h1>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+        header {
+            background-color: #1a1a2e;
+            color: #ffffff;
+            padding: 15px 20px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 20px;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+        header a:hover {
+            color: #f39c12;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            margin-top: 80px;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #333;
+        }
+        .section-box {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .section-box h2 {
+            margin-top: 0;
+            font-size: 22px;
+            color: #1a1a2e;
+        }
+        .section-box a {
+            display: block;
+            margin: 10px 0;
+            font-size: 18px;
+            text-decoration: none;
+            color: #1a1a2e;
+            transition: color 0.3s ease;
+        }
+        .section-box a:hover {
+            color: #f39c12;
+        }
+        .logout-button {
+            background-color: #e74c3c;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+        }
+        .logout-button:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="/index.html">Home</a>
+    <a href="./update-password.html">Update Password</a>
+    <a href="./logout.html">Logout</a>
+    <button class="logout-button" onclick="logout()">Clear Session</button>
+</header>
+
+<div class="container">
+    <h1>Welcome to Your Dashboard</h1>
+    <p class="welcome-message">You are logged in as <strong id="usernameDisplay"></strong></p>
+    
+    <div class="section-box">
+        <h2>Profile</h2>
+        <a href="profile.html" class="link">View Profile</a>
+    </div>
+    
+    <div class="section-box">
+        <h2>Account Settings</h2>
+        <a href="update-password.html" class="link">Update Password</a>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const username = localStorage.getItem('username') || 'User';
+        document.getElementById('usernameDisplay').textContent = username;
+    });
+
+    function logout() {
+        localStorage.removeItem('username');
+        localStorage.removeItem('password');
+        window.location.href = 'login.html'; // Redirect to login page
+    }
+</script>
+
+</body>
 </html>

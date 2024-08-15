@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <style>
+        /* Basic styles for profile page */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+        header {
+            background-color: #1a1a2e;
+            color: #ffffff;
+            padding: 10px 20px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 15px;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+        header a:hover {
+            color: #f39c12;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 30px;
+            font-size: 24px;
+            color: #333;
+        }
+        .info {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+        .link {
+            display: block;
+            margin: 15px 0;
+            font-size: 18px;
+            text-decoration: none;
+            color: #1a1a2e;
+        }
+        .link:hover {
+            color: #f39c12;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="/index.html">Back to Home</a>
+    <a href="./login.html">Logout</a>
+</header>
+
+<div class="container">
+    <h1>Your Profile</h1>
+    <div class="info">
+        <p><strong>Username:</strong> <span id="profileUsername"></span></p>
+    </div>
+    <a href="./update-password.html" class="link">Update Password</a>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const profileUsername = localStorage.getItem('username');
+        document.getElementById('profileUsername').textContent = profileUsername;
+    });
+</script>
+
+</body>
+</html>
