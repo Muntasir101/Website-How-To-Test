@@ -1,0 +1,13 @@
+1. Overlays
+Overlays are semi-transparent layers that appear over images when you hover. They can contain additional information or actions, like "Add to Cart" buttons or product details.
+
+2. Hover Effects
+Hover effects can include scaling the image, changing the background color, or revealing additional information when the user hovers over a product card.
+
+3. Image Masks
+Image masks can be used to create shapes or effects on the images, such as circular images or images with unique borders.
+
+xplanation
+Overlay: The .overlay class is added to a div within each .product-card. This div appears over the image with a semi-transparent background when the user hovers over the card.
+Hover Effects: The .product-card scale and shadow effect enhances interactivity. The :hover effect on the .product-card also affects the .overlay, making it visible when hovering.
+Image Masks: You can use border-radius on the images to achieve circular or rounded corners.

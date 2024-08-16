@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - E-Commerce Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            background-color: #172e2a;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+            padding: 10px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #f39c12;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .product-detail {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .product-detail img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .product-detail h1 {
+            font-size: 28px;
+            margin: 10px 0;
+            color: #333;
+        }
+        .product-detail p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .product-detail .price {
+            font-size: 24px;
+            color: #1a1a2e;
+            margin: 20px 0;
+        }
+        .product-detail .description {
+            font-size: 16px;
+            color: #444;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .product-detail button {
+            padding: 15px 30px;
+            background-color: #1a1a2e;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background-color 0.3s;
+        }
+        .product-detail button:hover {
+            background-color: #f39c12;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+            margin-top: 20px;
+        }
+        footer a {
+            color: #f39c12;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Product Details</h1>
+</header>
+
+<nav>
+    <a href="index.html" target="_self">Home</a>
+    <a href="products.html" target="_self">Products</a>
+    <a href="contact.html" target="_self">Contact Us</a>
+    <a href="#about" target="_self">About Us</a>
+    <a href="https://www.google.com" target="_blank">External Link</a>
+    <a href="mailto:info@example.com" target="_self">Email Us</a>
+    <a href="broken-link.html" target="_self">Account</a>
+    <a href="https://www.nonexistentwebsite123456789.com" target="_blank">Broken External Link</a>
+    <a href="redirect-link.html" target="_top">Redirect Link</a>
+</nav>
+
+<div class="container">
+    <div class="product-detail">
+        <img src="./images/1.jpg" alt="Product 1">
+        <h1>Product 1</h1>
+        <p class="price">$29.99</p>
+        <p class="description">
+            This is a detailed description of Product 1. It highlights the features, specifications, and benefits of the product. 
+            It should provide all the information a customer needs to make a purchase decision.
+        </p>
+        <button>Add to Cart</button>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 E-Commerce Store. All rights reserved. | <a href="#top" target="_self">Back to top</a></p>
+</footer>
+
+</body>
+</html>
