@@ -50,3 +50,25 @@ Localization and Internationalization:
 Validating Form Localization (e.g., Language Support, Date/Time Formats)
 Validating International Address and Phone Number Formats
 Validating Currency and Number Formats
+
+Authentication
+Validating Image Loading
+Validating Image Alt Text
+Broken Image Links
+Validate Image Overlay Functionality
+
+Links 
+Validating Links
+Identify Broken Links
+Validating Redirect
+Check for Deep Links
+Check Link Opening Behavior
+Verify Link Styling and Hover Effects
+
+Images
+Validating Image Loading
+Validating Image Alt Text
+Broken Image Links
+Validate Image Overlay Functionality
+Image Quality 
+
