@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misaligned Elements with CSS Properties</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+
+<header>
+    <h1>Misaligned Elements Example</h1>
+    <div class="header-extra">Extra Header Info</div> <!-- Broken Header Layout -->
+</header>
+
+<div class="container">
+    <div class="section text-section">
+        <h2>Text Section</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.</p>
+        <img src="./images/m1.jpeg" alt="Misaligned Image">
+        <div class="button-container">
+            <a href="#">Aligned Button 1</a>
+            <a href="#">Aligned Button 2</a>
+        </div>
+        <a href="#" class="button-misaligned">Misaligned Button</a>
+    </div>
+
+    <div class="section form-section">
+        <h2>Form Section</h2>
+        <label for="text-input">Text Input</label>
+        <input type="text" id="text-input" class="misaligned-input" placeholder="Enter text">
+
+        <label>Radio Buttons</label>
+        <input type="radio" id="radio1" name="radio-group" class="misaligned-radio">
+        <label for="radio1">Option 1</label>
+        <input type="radio" id="radio2" name="radio-group" class="misaligned-radio">
+        <label for="radio2">Option 2</label>
+
+        <label>Checkboxes</label>
+        <input type="checkbox" id="checkbox1" class="misaligned-checkbox">
+        <label for="checkbox1">Checkbox 1</label>
+        <input type="checkbox" id="checkbox2" class="misaligned-checkbox">
+        <label for="checkbox2">Checkbox 2</label>
+
+        <label for="calendar">Select Date</label>
+        <input type="date" id="calendar" class="calendar">
+
+        <label for="textarea">Message</label>
+        <textarea id="textarea" rows="5" placeholder="Enter your message"></textarea>
+    </div>
+
+    <!-- New sections for testing CSS properties -->
+    <div class="section text-align-section">
+        <h2>Text Alignment</h2>
+        <div class="text-align-left">
+            <p>This text is aligned to the left.</p>
+        </div>
+        <div class="text-align-center">
+            <p>This text is centered.</p>
+        </div>
+        <div class="text-align-right">
+            <p>This text is aligned to the right.</p>
+        </div>
+    </div>
+
+    <div class="section margin-padding-section">
+        <h2>Margin and Padding</h2>
+        <div class="margin-test">
+            <p>This element has a margin of 20px.</p>
+        </div>
+        <div class="padding-test">
+            <p>This element has padding of 20px and margin of 10px.</p>
+        </div>
+    </div>
+
+    <div class="section float-section">
+        <h2>Float</h2>
+        <div class="float-left">
+            <p>This block floats left.</p>
+        </div>
+        <div class="float-right">
+            <p>This block floats right.</p>
+        </div>
+        <div class="clear"></div> <!-- Clears the floats -->
+    </div>
+
+
+    <div class="section display-grid">
+        <h2>Display: Grid</h2>
+        <div class="grid-item">Item 1</div>
+        <div class="grid-item">Item 2</div>
+        <div class="grid-item">Item 3</div>
+    </div>
+
+    <div class="section display-flex">
+        <h2>Display: Flex</h2>
+        <div class="flex-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel urna nec massa lacinia posuere.</div>
+        <div class="flex-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel urna nec massa lacinia posuere.</div>
+        <div class="flex-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel urna nec massa lacinia posuere.</div>
+    </div>
+
+    <div class="section display-flex flex-row">
+        <h2>Flex Direction: Row</h2>
+        <div class="flex-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel urna nec massa lacinia posuere.</div>
+        <div class="flex-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel urna nec massa lacinia posuere.</div>
+        <div class="flex-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel urna nec massa lacinia posuere.</div>
+    </div>
+
+    <div class="section display-flex flex-column">
+        <h2>Flex Direction: Column</h2>
+        <div class="flex-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel urna nec massa lacinia posuere.</div>
+        <div class="flex-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel urna nec massa lacinia posuere.</div>
+        <div class="flex-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel urna nec massa lacinia posuere.</div>
+    </div>
+
+    <div class="section multi-column-section">
+        <h2>Multi-Column Content</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel urna nec massa lacinia posuere. Nam fringilla, ipsum ac elementum ullamcorper, lectus elit rhoncus mauris, nec hendrerit nisi nunc eget lorem. Integer in malesuada metus. Vestibulum vestibulum dictum nunc, non venenatis lacus hendrerit at. Suspendisse potenti. Fusce fringilla, lorem eget cursus vestibulum, elit erat hendrerit odio, vel vulputate arcu elit eu est.</p>
+        <p>Donec ut turpis sed felis laoreet bibendum. Nulla facilisi. Integer vehicula consectetur felis, a cursus ligula. Proin nec semper nisi. Morbi ut metus a velit dictum rhoncus. Phasellus sed tellus sed sapien pellentesque facilisis. Duis dictum dictum felis, in ultricies erat scelerisque vel.</p>
+    </div>
+
+    <!-- Scroll Section with Issues -->
+    <div class="section scroll-section">
+        <h2>Great Stories</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac luctus magna. Vestibulum at neque nec magna ultricies fermentum. Integer nec nisi at magna facilisis vehicula. Vivamus ut quam vel purus hendrerit venenatis non eget tortor.</p>
+        <p>Suspendisse potenti. Morbi id urna vitae orci egestas cursus non sit amet lacus. Fusce ut est ligula. Integer posuere dolor nec tortor fringilla, id scelerisque libero interdum. Praesent vitae velit lacus. Integer ultricies tincidunt neque id sagittis.</p>
+        <div class="hidden-content">
+            <p>Hidden content outside scroll area.</p>
+        </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2024 Misaligned Elements Example. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
