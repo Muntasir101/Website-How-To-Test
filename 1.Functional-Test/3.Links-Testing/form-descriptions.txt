@@ -1,0 +1,20 @@
+Features Included:
+Internal Links:
+
+Links to index.html, products.html, about.html, contact.html, subscribe.html, terms.html, and privacy.html.
+External Links:
+
+Links to social media platforms (Facebook, Twitter, Instagram) that open in a new tab (target="_blank").
+Anchor Link:
+
+The Subscribe link in the navigation menu scrolls to the Subscribe to Our Newsletter section using the anchor #newsletter.
+Mailto Link:
+
+A link that allows users to send an email directly (mailto:support@ecomsite.com).
+
+Deep Link: The "Contact Us" link in the navigation bar directs the user to the "Contact Us" section on the same page.
+
+Internal Links: Use target="_self" for navigation within the same frame (e.g., Home, Contact Us, etc.).
+External Links: Use target="_blank" to open in a new tab (e.g., Google).
+Parent Frame Links: Use target="_parent" to open in the parent frame (e.g., Products).
+Full Window Links: Use target="_top" to open in the full window, removing any frames (e.g., Redirect Link).
