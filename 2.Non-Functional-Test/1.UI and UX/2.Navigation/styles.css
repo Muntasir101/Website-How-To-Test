@@ -1,0 +1,190 @@
+/* Reset some default styles */
+body, ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.navbar {
+    background-color: #333;
+    padding: 10px 20px;
+    position: relative;
+}
+
+.menu, .mobile-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-item {
+    position: relative;
+    margin-right: 20px;
+}
+
+.menu-item a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+}
+
+.menu-item a:hover, .dropdown-toggle:hover {
+    background-color: #555;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown .submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    padding: 10px 0;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.submenu-item a {
+    padding: 10px 20px;
+    display: block;
+}
+
+.submenu-item a:hover {
+    background-color: #555;
+}
+
+.dropdown:hover .submenu {
+    display: block;
+}
+
+header, footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+footer {
+    margin-top: auto; /* Pushes footer to the bottom */
+}
+
+.content {
+    padding: 40px;
+    text-align: center;
+    background-color: white;
+    margin: 20px auto;
+    max-width: 800px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Mobile Menu Styles */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    background: #333;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.menu-toggle .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: white;
+    margin: 5px auto;
+    transition: background 0.3s ease;
+}
+
+.mobile-menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #333;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    padding: 0;
+}
+
+.mobile-menu-item {
+    border-bottom: 1px solid #444;
+}
+
+.mobile-menu-item a {
+    padding: 15px;
+    display: block;
+    color: white;
+    text-decoration: none;
+}
+
+.mobile-menu-item a:hover {
+    background-color: #555;
+}
+
+/* Show mobile menu on mobile devices */
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .mobile-menu.active {
+        display: flex;
+    }
+
+    .dropdown .submenu {
+        display: none;
+    }
+}
+
+/* Breadcrumb Styles */
+.breadcrumb {
+    background-color: #f9f9f9;
+    padding: 10px 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+.breadcrumb a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb span {
+    color: #6c757d;
+    font-size: 14px;
+}
+
+/* Rest of your existing styles */
+
