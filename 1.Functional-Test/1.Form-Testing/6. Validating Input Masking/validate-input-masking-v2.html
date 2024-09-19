@@ -107,10 +107,7 @@
         <input type="text" id="username" name="username" required maxlength="50" list="usernameSuggestions">
         <datalist id="usernameSuggestions">
             <option value="john_doe"></option>
-            <option value="jane_smith"></option>
-            <option value="user1234"></option>
             <option value="admin"></option>
-            <option value="guest"></option>
         </datalist>
 
         <!-- Email (Mandatory) with Auto-Completion -->
@@ -118,9 +115,6 @@
         <input type="email" id="email" name="email" required maxlength="255" list="emailSuggestions">
         <datalist id="emailSuggestions">
             <option value="john@example.com"></option>
-            <option value="jane@example.com"></option>
-            <option value="user1234@example.com"></option>
-            <option value="admin@example.com"></option>
             <option value="guest@example.com"></option>
         </datalist>
 
@@ -183,10 +177,8 @@
     });
 
     document.getElementById('registrationForm').addEventListener('submit', function(event) {
-        // Prevent form submission
         event.preventDefault();
 
-        // Clear previous error messages
         document.getElementById('usernameError').textContent = '';
         document.getElementById('emailError').textContent = '';
         document.getElementById('passwordError').textContent = '';
@@ -196,8 +188,7 @@
 
         let isValid = true;
 
-        // Validate Username
-        const username = document.getElementById('username').value.trim();
+        const username = document.getElementById('username').value;
         if (!username) {
             document.getElementById('usernameError').textContent = 'Username is required.';
             isValid = false;
@@ -206,8 +197,7 @@
             isValid = false;
         }
 
-        // Validate Email
-        const email = document.getElementById('email').value.trim();
+        const email = document.getElementById('email').value;
         if (!email) {
             document.getElementById('emailError').textContent = 'Email Address is required.';
             isValid = false;
@@ -219,9 +209,8 @@
             isValid = false;
         }
 
-        // Validate Password
-        const password = document.getElementById('password').value.trim();
-        const confirmPassword = document.getElementById('confirmPassword').value.trim();
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
         if (!password) {
             document.getElementById('passwordError').textContent = 'Password is required.';
             isValid = false;
@@ -233,23 +222,20 @@
             isValid = false;
         }
 
-        // Validate Phone Number (Optional)
-        const phone = document.getElementById('phone').value.trim();
+        const phone = document.getElementById('phone').value;
         if (phone && phone.length > 15) {
             document.getElementById('phoneError').textContent = 'Phone Number must not exceed 15 characters.';
             isValid = false;
         }
 
-        // Validate Address (Optional)
-        const address = document.getElementById('address').value.trim();
+        const address = document.getElementById('address').value;
         if (address && address.length > 300) {
             document.getElementById('addressError').textContent = 'Address must not exceed 300 characters.';
             isValid = false;
         }
 
-        // If all validations pass, submit the form
         if (isValid) {
-            alert('Form submitted successfully!');
+            alert('Form no submitted successfully!');
             this.submit();
         }
     });

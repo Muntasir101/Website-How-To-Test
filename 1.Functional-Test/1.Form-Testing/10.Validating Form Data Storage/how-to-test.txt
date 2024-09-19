@@ -1,5 +1,8 @@
 Validating Form Data Storage
-Validating form data storage involves ensuring that the data entered into a form is correctly saved and retrieved from the storage mechanism used. Here’s how to approach validating form data storage:
+Validating form data storage involves ensuring that the data entered into a form 
+is correctly saved and retrieved from the storage mechanism used. 
+
+Here’s how to approach validating form data storage:
 
 1. Test Scenarios
 Scenario 1: Verify Data Storage
